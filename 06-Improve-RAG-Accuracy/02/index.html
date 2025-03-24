@@ -2033,14 +2033,14 @@
 
 
 <h1 id="62-use-semantic-ranking-in-postgresql">6.2 Use Semantic Ranking in PostgreSQL<a class="headerlink" href="#62-use-semantic-ranking-in-postgresql" title="Permanent link">&para;</a></h1>
-<p>By leveraging the power of <em>semantic ranking</em>, you can improve the accuracy of data retrieval and help ensure the success of your Generative AI applications. In this task, you will create a user-defined function (UDF) in your database that utilizes <a href="https://learn.microsoft.com/azure/postgresql/flexible-server/generative-ai-azure-machine-learning">model inferencing capabilities of the Azure AI extension</a>. Specifically, the <code>azure_ml.invoke()</code> method of the extension will be called from within the UDF to seamlessly invoke a semantic ranking model directly within SQL queries.</p>
+<p>By leveraging the power of <em>semantic re-ranking</em>, you can improve the accuracy of data retrieval and help ensure the success of your Generative AI applications. In this task, you will create a user-defined function (UDF) in your database that utilizes <a href="https://learn.microsoft.com/azure/postgresql/flexible-server/generative-ai-azure-machine-learning">model inferencing capabilities of the Azure AI extension</a>. Specifically, the <code>azure_ml.invoke()</code> method of the extension will be called from within the UDF to seamlessly invoke a semantic ranking model directly within SQL queries.</p>
 <details class="info" open="open">
 <summary>Your Semantic Ranker model was deployed to Azure ML.</summary>
-<p>The deployment of this solution accelerator included executing a post-deployment script to download the <a href="https://huggingface.co/BAAI/bge-reranker-v2-m3">BGE-reranker-v2-m3</a> semantic ranker model and deploy it as an Azure Machine Learning (AML) inference endpoint in your subscription. This model was selected because it is lightweight, easy to deploy, and provides fast inference.</p>
+<p>Depending on what semantic re-ranker setting you chose during azd up deployment, the deployment of this solution accelerator included executing a post-deployment script to download either the <code>mini</code> model: <a href="https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2">ms-marco-MiniLM-L6-v2</a> or the <code>bge</code> model: <a href="https://huggingface.co/BAAI/bge-reranker-v2-m3">BGE-reranker-v2-m3</a> cross encoder model and deploy it as an Azure Machine Learning (AML) inference endpoint in your subscription. These models were selected because they are lightweight, easy to deploy, and provides fast inference.</p>
 </details>
 <h2 id="create-a-reranking-function">Create a reranking function<a class="headerlink" href="#create-a-reranking-function" title="Permanent link">&para;</a></h2>
 <p>To simplify the integration of semantic ranking and invocation of the semantic ranker model from Azure ML, you will create a user-defined function (UDF). The function uses the <code>azure_ai</code> extension to directly make remote calls to the AML inference endpoint from a SQL query. Using the <code>azure_ml.invoke()</code> function within a UDF, you can make calls to the semantic ranker model.</p>
-<details class="info">
+<details class="info" open="open">
 <summary>You already configured the extension's connection to Azure ML</summary>
 <p>Recall that you already configured the Azure AI extension's connection to Azure ML in task <a href="../../03-Integrate-AI-Into-PostgreSQL/02/">3.2 Configure the Azure AI extension</a> using the following commands:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2060,11 +2060,75 @@
 <p>Right-click the <strong>contracts</strong> database and select <strong>Query Tool</strong> from the context menu.</p>
 </li>
 <li>
-<p>Run the following query to create the <code>semantic_reranking</code> function:</p>
+<p>Run one of the following queries to create the <code>semantic_reranking</code> function:</p>
+<ul>
+<li>Run the first one if you chose the <code>mini</code> model</li>
+<li>Run the second one if you chose the <code>bge</code> model</li>
+</ul>
 <div class="admonition danger">
-<p class="admonition-title">Execute the following SQL command in pgAdmin!</p>
+<p class="admonition-title">Execute one of the following SQL commands below in pgAdmin!</p>
 </div>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Create Semantic Reranking UDF</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">For mini model - Create Semantic Reranking UDF</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">semantic_reranking</span><span class="p">(</span><span class="n">query</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">vector_search_results</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">[])</span>
+<span class="k">RETURNS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="p">(</span><span class="n">content</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">relevance</span><span class="w"> </span><span class="nb">NUMERIC</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">$$</span>
+<span class="k">BEGIN</span>
+<span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="n">QUERY</span>
+<span class="w">    </span><span class="k">WITH</span>
+<span class="w">    </span><span class="n">json_pairs</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="n">jsonb_build_object</span><span class="p">(</span>
+<span class="w">            </span><span class="s1">&#39;pairs&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">jsonb_agg</span><span class="p">(</span><span class="n">jsonb_build_array</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="n">content_</span><span class="p">))</span>
+<span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">json_pairs_data</span>
+<span class="w">        </span><span class="k">FROM</span><span class="w"> </span><span class="p">(</span>
+<span class="w">            </span><span class="k">SELECT</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">content</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">content_</span>
+<span class="w">            </span><span class="k">FROM</span><span class="w"> </span><span class="k">unnest</span><span class="p">(</span><span class="n">vector_search_results</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="n">relevance_scores_raw</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="n">azure_ml</span><span class="p">.</span><span class="n">invoke</span><span class="p">(</span>
+<span class="w">            </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">json_pairs_data</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">json_pairs</span><span class="p">),</span>
+<span class="w">            </span><span class="n">deployment_name</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;msmarco-minilm-deployment-6&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">timeout_ms</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mi">120000</span>
+<span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">response_json</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="n">relevance_scores</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">jsonb_array_elements</span><span class="p">(</span><span class="n">response_json</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">item</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">relevance_scores_raw</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="k">SELECT</span>
+<span class="w">        </span><span class="n">item</span><span class="w"> </span><span class="o">-&gt;&gt;</span><span class="w"> </span><span class="s1">&#39;content&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">content</span><span class="p">,</span>
+<span class="w">        </span><span class="p">(</span><span class="n">item</span><span class="w"> </span><span class="o">-&gt;&gt;</span><span class="w"> </span><span class="s1">&#39;score&#39;</span><span class="p">)::</span><span class="nb">NUMERIC</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">relevance</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">relevance_scores</span><span class="p">;</span>
+<span class="k">END</span><span class="w"> </span><span class="err">$$</span><span class="w"> </span><span class="k">LANGUAGE</span><span class="w"> </span><span class="n">plpgsql</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">For bge model - Create Semantic Reranking UDF</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2136,7 +2200,7 @@
 <span class="w">                </span><span class="n">a</span><span class="p">.</span><span class="n">idx2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">idx</span><span class="p">;</span>
 <span class="k">END</span><span class="w"> </span><span class="err">$$</span><span class="w"> </span><span class="k">LANGUAGE</span><span class="w"> </span><span class="n">plpgsql</span><span class="p">;</span>
 </code></pre></div></td></tr></table></div>
-<details class="info">
+<details class="info" open="open">
 <summary>How does the `semantic_reranking function work?</summary>
 <p>The <code>semantic_reranking</code> function enhances search results by re-ranking them based on their semantic relevance to a given query. Here's a breakdown of how it works:</p>
 <p><strong>Input Parameters</strong></p>
@@ -2165,7 +2229,7 @@
 <li>
 <p>In the <strong>pgAdmin</strong> query window, run the following query and observe the results.</p>
 <div class="admonition danger">
-<p class="admonition-title">Execute the following SQL command in pgAdmin!</p>
+<p class="admonition-title">Execute the following SQL command in pgAdmin! (Works for both <code>mini</code> and <code>bge</code> models)</p>
 </div>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Semantic ranking query</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>

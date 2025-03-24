@@ -2042,8 +2042,8 @@
 <h2 id="verify-azure-ml-cpu-quota">Verify Azure ML CPU Quota<a class="headerlink" href="#verify-azure-ml-cpu-quota" title="Permanent link">&para;</a></h2>
 <p>This solution accelerator contains a section dedicated to setting up and using a Semantic Ranking model directly from your PostgreSQL database. The deployment of this component of the architecture requires sufficient CPU quota (4 or 16 cores) in Azure Machine Learning to accommodate your choice of either of the following models:</p>
 <ul>
-<li><a href="https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2">Hugging Face miniLM re-ranker model deployment</a>. Smaller model, high accuracy, requiring 4 cores.</li>
-<li><a href="https://huggingface.co/BAAI/bge-reranker-v2-m3">Hugging Face BGE re-ranker model deployment</a>. Larger model, highest accuracy, requiring 16 cores.</li>
+<li><a href="https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2">Hugging Face miniLM re-ranker model deployment</a>. Smaller model, high accuracy, requiring 4 CPU cores.</li>
+<li><a href="https://huggingface.co/BAAI/bge-reranker-v2-m3">Hugging Face BGE re-ranker model deployment</a>. Larger model, highest accuracy, requiring 16 CPU cores.</li>
 </ul>
 <p>In this task, you must verify you have available quota for the target virtual machine (VM) instance type (<code>STANDARD_D4AS_V4</code> or <code>STANDARD_D16AS_V4</code>), and if not, request additional quota.</p>
 <ol>
