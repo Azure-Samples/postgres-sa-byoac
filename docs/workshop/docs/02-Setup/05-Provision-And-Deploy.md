@@ -38,7 +38,7 @@ Before running the `azd up` command, you must authenticate your VS Code environm
 
 ## Provision Azure Resource and Deploy App (UI and API)
 
-You are now ready to provision your Azure resources and deploy the Woodgrove back solution.
+You are now ready to provision your Azure resources and deploy the Woodgrove Bank solution.
 
 1. Use `azd up` to provision your Azure infrastructure and deploy the web application to Azure.
 
@@ -82,9 +82,9 @@ You are now ready to provision your Azure resources and deploy the Woodgrove bac
         | **Latency**                 | Low (sub-ms to ms)                                        | Medium (10–30ms typical)| Higher (50–100ms+)  |
         | **Compute Requirements**    | Minimal (dot product or cosine sim)                       | Low (small model)      | Moderate (larger model) |
         | **MRR@10**                  | ~0.32–0.36                                                | ~0.38–0.39             | ~0.42–0.44          |
-        | **nDCG@10**                 | ~0.45–0.50                                                | ~0.52–0.54             | ~0.57–0.60          |        
+        | **nDCG@10**                 | ~0.45–0.50                                                | ~0.52–0.54             | ~0.57–0.60          |
         | **Ranking Quality**         | Fair — coarse semantic relevance                          | Better — some nuance   | Excellent — high fidelity |
-        | **Best Use Case**           | Fast first-pass retrieval                                 | Lightweight reranking  | High-precision reranking |   
+        | **Best Use Case**           | Fast first-pass retrieval                                 | Lightweight reranking  | High-precision reranking |
 
     !!! failure "Not enough subscription CPU quota"
 

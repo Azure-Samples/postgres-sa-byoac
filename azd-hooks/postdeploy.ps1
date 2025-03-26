@@ -39,6 +39,7 @@ az postgres flexible-server firewall-rule create `
     --end-ip-address $publicIpAddress
 
 Write-Host "Added Firewall Rule for $publicIpAddress"
+Start-Sleep -Seconds 5
 
 # ##############################################################################
 # Create Database Schema
