@@ -2,194 +2,386 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/index_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/01-Introduction/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/01-Introduction/01-App-Scenario/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/01-Introduction/01-App-Scenario_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/01-Introduction/02-App-Architecture/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/01-Introduction/02-App-Architecture_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/01-Introduction/03-Azure-Cost/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/01-Introduction/03-Azure-Cost_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/01-Introduction/04-Data-Structure/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/01-Introduction/04-Data-Structure_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/01-Introduction/index_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/02-Setup/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/02-Setup/00-Prerequisites/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/02-Setup/00-Prerequisites_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/02-Setup/01-Install-Software/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/02-Setup/01-Install-Software_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/02-Setup/02-Fork-Repo/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/02-Setup/02-Fork-Repo_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/02-Setup/03-Select-Azure-Region/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/02-Setup/03-Select-Azure-Region_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/02-Setup/04-Verify-Azure-Quota/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/02-Setup/04-Verify-Azure-Quota_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/02-Setup/05-Provision-And-Deploy/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/02-Setup/05-Provision-And-Deploy_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/02-Setup/06-Validation/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/02-Setup/06-Validation_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/02-Setup/07-Setup-Dev-Env/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/02-Setup/07-Setup-Dev-Env_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/02-Setup/08-Review-Manual-Process/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/02-Setup/08-Review-Manual-Process_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/02-Setup/index_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/03-Integrate-AI-Into-PostgreSQL/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/03-Integrate-AI-Into-PostgreSQL/01/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/03-Integrate-AI-Into-PostgreSQL/01_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/03-Integrate-AI-Into-PostgreSQL/02/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/03-Integrate-AI-Into-PostgreSQL/02_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/03-Integrate-AI-Into-PostgreSQL/03/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/03-Integrate-AI-Into-PostgreSQL/03_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/03-Integrate-AI-Into-PostgreSQL/04/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/03-Integrate-AI-Into-PostgreSQL/04_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/03-Integrate-AI-Into-PostgreSQL/05/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/03-Integrate-AI-Into-PostgreSQL/05_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/03-Integrate-AI-Into-PostgreSQL/index_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/04-Create-AI-Pipeline/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/04-Create-AI-Pipeline/01/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/04-Create-AI-Pipeline/01_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/04-Create-AI-Pipeline/02/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/04-Create-AI-Pipeline/02_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/04-Create-AI-Pipeline/03/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/04-Create-AI-Pipeline/03_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/04-Create-AI-Pipeline/04/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/04-Create-AI-Pipeline/04_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/04-Create-AI-Pipeline/05/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/04-Create-AI-Pipeline/05_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/04-Create-AI-Pipeline/index_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/05-Build-Copilot/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/05-Build-Copilot/01/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/05-Build-Copilot/01_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/05-Build-Copilot/02/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/05-Build-Copilot/02_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/05-Build-Copilot/03/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/05-Build-Copilot/03_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/05-Build-Copilot/04/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/05-Build-Copilot/04_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/05-Build-Copilot/05/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/05-Build-Copilot/05_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/05-Build-Copilot/06/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/05-Build-Copilot/06_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/05-Build-Copilot/07/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/05-Build-Copilot/07_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/05-Build-Copilot/08/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/05-Build-Copilot/08_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/05-Build-Copilot/index_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/06-Improve-RAG-Accuracy/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/06-Improve-RAG-Accuracy/01/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/06-Improve-RAG-Accuracy/01_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/06-Improve-RAG-Accuracy/02/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/06-Improve-RAG-Accuracy/02_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/06-Improve-RAG-Accuracy/03/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/06-Improve-RAG-Accuracy/03_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/06-Improve-RAG-Accuracy/04/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/06-Improve-RAG-Accuracy/04_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/06-Improve-RAG-Accuracy/05/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/06-Improve-RAG-Accuracy/05_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/06-Improve-RAG-Accuracy/06/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/06-Improve-RAG-Accuracy/06_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/06-Improve-RAG-Accuracy/07/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/06-Improve-RAG-Accuracy/07_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/06-Improve-RAG-Accuracy/08/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/06-Improve-RAG-Accuracy/08_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/06-Improve-RAG-Accuracy/index_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/07-Redeploy/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/07-Redeploy/index_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
     <url>
          <loc>https://azure-samples.github.io/postgres-sa-byoac/Tear-Down/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://azure-samples.github.io/postgres-sa-byoac/Tear-Down/index_jp/</loc>
+         <lastmod>2025-04-05</lastmod>
     </url>
 </urlset>
