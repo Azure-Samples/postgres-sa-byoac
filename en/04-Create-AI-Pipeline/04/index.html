@@ -1,0 +1,4190 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Build custom AI-powered solutions on top of Azure Database for PostgreSQL.">
+      
+      
+        <meta name="author" content="jjfrost">
+      
+      
+        <link rel="canonical" href="https://azure-samples.github.io/postgres-sa-byoac/en/04-Create-AI-Pipeline/04/">
+      
+      
+        <link rel="prev" href="../03/">
+      
+      
+        <link rel="next" href="../05/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>4.4 Validate Data with Azure OpenAI - Build your own advanced AI Copilot with PostgreSQL: Workshop Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#44-validate-data-with-azure-openai" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Build your own advanced AI Copilot with PostgreSQL: Workshop Guide" class="md-header__button md-logo" aria-label="Build your own advanced AI Copilot with PostgreSQL: Workshop Guide" data-md-component="logo">
+      
+  <img src="../../../img/postgresql.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Build your own advanced AI Copilot with PostgreSQL: Workshop Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4.4 Validate Data with Azure OpenAI
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2c-1.82 0-3.53.5-5 1.35C8 5.08 10 8.3 10 12s-2 6.92-5 8.65C6.47 21.5 8.18 22 10 22a10 10 0 0 0 10-10A10 10 0 0 0 10 2"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-gray" data-md-color-accent="dark-blue"  aria-label="Switch to system mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/en/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/ja/" hreflang="ja" class="md-select__link">
+              Japanese
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/azure-samples/postgres-sa-byoac" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    azure-samples/postgres-sa-byoac
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Before You Begin
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  En
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ja/" class="md-tabs__link">
+          
+  
+    
+  
+  Ja
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Build your own advanced AI Copilot with PostgreSQL: Workshop Guide" class="md-nav__button md-logo" aria-label="Build your own advanced AI Copilot with PostgreSQL: Workshop Guide" data-md-component="logo">
+      
+  <img src="../../../img/postgresql.svg" alt="logo">
+
+    </a>
+    Build your own advanced AI Copilot with PostgreSQL: Workshop Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/azure-samples/postgres-sa-byoac" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    azure-samples/postgres-sa-byoac
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Before You Begin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    En
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            En
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../01-Introduction/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    01 Introduction
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            01 Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-Introduction/01-App-Scenario/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.1 The App Scenario
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-Introduction/02-App-Architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.2 Application Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-Introduction/03-Azure-Cost/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.3 Azure Cost Estimate
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-Introduction/04-Data-Structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.4 Provided Artifacts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../02-Setup/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    02 Setup
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            02 Setup
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-Setup/00-Prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.0 Prerequisites
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-Setup/01-Install-Software/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 Install Software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-Setup/02-Fork-Repo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 Fork Repo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-Setup/03-Select-Azure-Region/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.3 Select An Azure Region
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-Setup/04-Verify-Azure-Quota/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.4 Verify Azure Quota
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-Setup/05-Provision-And-Deploy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.5 Provision and Deploy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-Setup/06-Validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.6 Validate Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-Setup/07-Setup-Dev-Env/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.7 Setup Dev Environment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-Setup/08-Review-Manual-Process/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.8 Review Manual Process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../03-Integrate-AI-Into-PostgreSQL/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    03 Integrate AI Into PostgreSQL
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            03 Integrate AI Into PostgreSQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-Integrate-AI-Into-PostgreSQL/01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.1 Install extensions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-Integrate-AI-Into-PostgreSQL/02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.2 Configure the Azure AI extension
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-Integrate-AI-Into-PostgreSQL/03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.3 Enable vector storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-Integrate-AI-Into-PostgreSQL/04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.4 Optimize Vector Query Performance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-Integrate-AI-Into-PostgreSQL/05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.5 Vectorize data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    04 Create AI Pipeline
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            04 Create AI Pipeline
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.1 Extract Data with Document Intelligence
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.2 Configure Structural Element-Based Chunking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.3 Summarize documents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    4.4 Validate Data with Azure OpenAI
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    4.4 Validate Data with Azure OpenAI
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#benefits-of-using-azure-openai-for-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits of Using Azure OpenAI for Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invoice-validation-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Invoice Validation Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Invoice Validation Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-trigger-invoice-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Trigger Invoice Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-define-system-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Define System Prompt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-construct-full-prompt-with-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Construct Full Prompt with RAG
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-invoke-the-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Invoke the AI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-parse-our-passed-or-failed-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Parse our passed or failed state
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-insert-validation-result-into-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6: Insert Validation Result into database
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sow-validation-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      SOW Validation Workflow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perform-document-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Perform Document Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-learning-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Learning References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.5 Review Validation Prompts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../05-Build-Copilot/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    05 Build Copilot
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            05 Build Copilot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-Build-Copilot/01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.1 Explore the API Codebase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-Build-Copilot/02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.2 Review RAG Design
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-Build-Copilot/03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.3 Leverage LangChain Orchestration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-Build-Copilot/04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.4 Enable the Chat Endpoint
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-Build-Copilot/05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.5 Test the Chat API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-Build-Copilot/06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.6 Add Copilot Chat To UI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-Build-Copilot/07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.7 Test the UI Copilot Chat
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-Build-Copilot/08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.8 Refine the Copilot Prompt
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../06-Improve-RAG-Accuracy/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    06 Improve RAG Accuracy
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            06 Improve RAG Accuracy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-Improve-RAG-Accuracy/01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.1 Understand Semantic Ranking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-Improve-RAG-Accuracy/02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.2 Use Semantic Ranking in PostgreSQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-Improve-RAG-Accuracy/03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.3 Update Copilot With Semantic Ranking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-Improve-RAG-Accuracy/04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.4 Review GraphRAG
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-Improve-RAG-Accuracy/05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.5 Enable AGE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-Improve-RAG-Accuracy/06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.6 Export Graph Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-Improve-RAG-Accuracy/07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.7 Create Graph Database
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-Improve-RAG-Accuracy/08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.8 Update Copilot With GraphRAG
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../07-Redeploy/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    07 Redeploy
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            07 Redeploy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Tear-Down/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Tear Down
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            Tear Down
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ja/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Ja
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Ja
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ja/01-Introduction/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    01 Introduction
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            01 Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/01-Introduction/01-App-Scenario/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.1 アプリケーションシナリオ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/01-Introduction/02-App-Architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.2 アプリケーションアーキテクチャ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/01-Introduction/03-Azure-Cost/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.3 Azure コスト見積もり
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/01-Introduction/04-Data-Structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.4 提供されるアーティファクト
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ja/02-Setup/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    02 Setup
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            02 Setup
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/02-Setup/00-Prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.0 前提条件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/02-Setup/01-Install-Software/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 ソフトウェアのインストール
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/02-Setup/02-Fork-Repo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 リポジトリをフォークする
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/02-Setup/03-Select-Azure-Region/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.3 Azure リージョンを選択する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/02-Setup/04-Verify-Azure-Quota/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.4 Azure クォータの確認
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/02-Setup/05-Provision-And-Deploy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.5 プロビジョニングとデプロイ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/02-Setup/06-Validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.6 デプロイの検証
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/02-Setup/07-Setup-Dev-Env/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.7 開発環境のセットアップ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/02-Setup/08-Review-Manual-Process/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.8 手動プロセスのレビュー
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ja/03-Integrate-AI-Into-PostgreSQL/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    03 Integrate AI Into PostgreSQL
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            03 Integrate AI Into PostgreSQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/03-Integrate-AI-Into-PostgreSQL/01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.1 拡張機能のインストール
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/03-Integrate-AI-Into-PostgreSQL/02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.2 Azure AI 拡張機能の設定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/03-Integrate-AI-Into-PostgreSQL/03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.3 ベクターストレージを有効にする
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/03-Integrate-AI-Into-PostgreSQL/04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.4 ベクタークエリのパフォーマンスを最適化する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/03-Integrate-AI-Into-PostgreSQL/05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.5 データのベクトル化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ja/04-Create-AI-Pipeline/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    04 Create AI Pipeline
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            04 Create AI Pipeline
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/04-Create-AI-Pipeline/01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.1 ドキュメントインテリジェンスによるデータ抽出
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/04-Create-AI-Pipeline/02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.2 構造要素ベースのチャンク設定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/04-Create-AI-Pipeline/03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.3 ドキュメントの要約
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/04-Create-AI-Pipeline/04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.4 Azure OpenAIを使用したデータの検証
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/04-Create-AI-Pipeline/05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.5 検証プロンプトのレビュー
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ja/05-Build-Copilot/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    05 Build Copilot
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            05 Build Copilot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/05-Build-Copilot/01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.1 APIコードベースの探索
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/05-Build-Copilot/02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.2 RAGデザインのレビュー
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/05-Build-Copilot/03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.3 LangChainオーケストレーションの活用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/05-Build-Copilot/04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.4 チャットエンドポイントを有効にする
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/05-Build-Copilot/05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.5 チャット API のテスト
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/05-Build-Copilot/06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.6 CopilotチャットをUIに追加する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/05-Build-Copilot/07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.7 UI Copilot チャットのテスト
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/05-Build-Copilot/08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.8 Copilotプロンプトの改善
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ja/06-Improve-RAG-Accuracy/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    06 Improve RAG Accuracy
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            06 Improve RAG Accuracy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/06-Improve-RAG-Accuracy/01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.1 セマンティックランキングを理解する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/06-Improve-RAG-Accuracy/02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.2 PostgreSQLでセマンティックランキングを使用する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/06-Improve-RAG-Accuracy/03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.3 セマンティックランキングでコパイロットを更新する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/06-Improve-RAG-Accuracy/04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.4 GraphRAGのレビュー
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/06-Improve-RAG-Accuracy/05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.5 AGEを有効にする
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/06-Improve-RAG-Accuracy/06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.6 グラフデータのエクスポート
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/06-Improve-RAG-Accuracy/07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.7 グラフデータベースの作成
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ja/06-Improve-RAG-Accuracy/08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.8 GraphRAGでCopilotを更新する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ja/07-Redeploy/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    07 Redeploy
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            07 Redeploy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ja/Tear-Down/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Tear Down
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            Tear Down
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#benefits-of-using-azure-openai-for-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits of Using Azure OpenAI for Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invoice-validation-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Invoice Validation Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Invoice Validation Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-trigger-invoice-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Trigger Invoice Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-define-system-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Define System Prompt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-construct-full-prompt-with-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Construct Full Prompt with RAG
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-invoke-the-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Invoke the AI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-parse-our-passed-or-failed-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Parse our passed or failed state
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-insert-validation-result-into-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6: Insert Validation Result into database
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sow-validation-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      SOW Validation Workflow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perform-document-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Perform Document Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-learning-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Learning References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="44-validate-data-with-azure-openai">4.4 Validate Data with Azure OpenAI<a class="headerlink" href="#44-validate-data-with-azure-openai" title="Permanent link">&para;</a></h1>
+<p>The document ingestion pipeline within the application for SOW and Invoice records is implemented with a multi-stage workflow. The first stage of the workflow is analyzing the document and ingesting it into the system to INSERT/UPDATE SOW and Invoice records based on the document uploaded. The second stage of the workflow is to validate the SOW and/or Invoice record.</p>
+<p>The SOW and Invoice validation step of the document ingestion workflow uses Azure OpenAI to perform a chat completion using retrieval augmented generation (RAG) pattern to validate the data from the database and generate an analysis of the validation result.</p>
+<p>The code for the validation step of the workflow processes is contained within the REST API <code>/validation/invoice/{id}</code> endpoint for Invoices, and <code>/validation/sow/{id}</code> endpoint for SOWs. The code for these is located within the <code>src/api/app/routers/validation.py</code> file. The below explanation covers the process for validating Invoices, but the same strategy is followed for SOW too.</p>
+<hr />
+<h2 id="benefits-of-using-azure-openai-for-validation">Benefits of Using Azure OpenAI for Validation<a class="headerlink" href="#benefits-of-using-azure-openai-for-validation" title="Permanent link">&para;</a></h2>
+<p>The integration of Azure OpenAI into the validation workflow provides several key benefits:</p>
+<ul>
+<li>
+<p><strong>Automated Validation:</strong> Reduces the need for manual data reviews, saving time and effort.</p>
+</li>
+<li>
+<p><strong>Accuracy and Compliance:</strong> Ensures invoices align with contractual agreements in SOWs, reducing payment errors.</p>
+</li>
+<li>
+<p><strong>Fraud Detection:</strong> Help identifies potential invoice fraud or inconsistencies before payments are processed.</p>
+</li>
+<li>
+<p><strong>Scalability:</strong> Can handle large volumes of invoices efficiently, making it suitable for enterprises with extensive vendor relationships.</p>
+</li>
+<li>
+<p><strong>Audit and Traceability:</strong> Stores detailed validation results for future reference, supporting regulatory and compliance requirements.</p>
+</li>
+</ul>
+<hr />
+<h2 id="invoice-validation-workflow">Invoice Validation Workflow<a class="headerlink" href="#invoice-validation-workflow" title="Permanent link">&para;</a></h2>
+<p>The validation workflow of Invoices and SOWs is implemented using the same retrieval augmented generation (RAG) pattern and system prompt style. Let's walk through the steps involved with the workflow process to validate Invoices:</p>
+<h3 id="step-1-trigger-invoice-validation">Step 1: Trigger Invoice Validation<a class="headerlink" href="#step-1-trigger-invoice-validation" title="Permanent link">&para;</a></h3>
+<p>The validation process begins when an invoice id is sent in a request to the validation API endpoint:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>POST / validation/invoice/{id}
+</code></pre></div></td></tr></table></div>
+<p>The <code>{id}</code> placeholder is where the <code>id</code> of the Invoice will be passed in. The API handler (within the <code>src/api/app/routers/validation.py</code> file) will use this id to retrieve the relevant data from the database.</p>
+<h3 id="step-2-define-system-prompt">Step 2: Define System Prompt<a class="headerlink" href="#step-2-define-system-prompt" title="Permanent link">&para;</a></h3>
+<p>Before Azure OpenAI can be used to perform the validation, the system prompt must first be defined. This system prompt sill instruct the AI what it's expected to do, what to look for in the data, and how to respond with the validation results.</p>
+<p>This application includes code that retrieves the system prompt from a text file:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">src/api/app/routers/validation.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Define the system prompt for the validator.</span>
+<span class="n">system_prompt</span> <span class="o">=</span> <span class="n">prompt_service</span><span class="o">.</span><span class="n">get_prompt</span><span class="p">(</span><span class="s2">&quot;invoice_validation&quot;</span><span class="p">)</span>
+<span class="c1"># Append the current date to the system prompt to provide context when checking timeliness of deliverables.</span>
+<span class="n">system_prompt</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">For context, today is </span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%A, %B </span><span class="si">%d</span><span class="s1">, %Y&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>For reference, here's the system prompt the application uses for validating Invoices:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">src/api/app/prompts/invoice_validation.txt</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code>You are an intelligent copilot for Woodgrove Bank designed to automate the validation of vendor invoices against billing milestones in statements of work (SOWs).
+
+When validating an invoice, you should:
+1. Verify that the invoice number matches the vendor&#39;s records.
+2. Check that the total amount on the invoice is correct.
+3. Ensure that the milestone delivery dates are before or on the specified due date in the SOW.
+4. Assess any late fees or penalties that may apply, as defined by the SOW. For example, if a milestone is late, a penalty of 15% should be applied to payment of that milestone.
+5. Validate the line items on the invoice against the billing milestones in the SOW.
+6. Ensure that the amount billed for each line item matches the billable amount specified in the SOW.
+7. If the invoice contains notes to explain discrepancies, review them for additional context.
+8. Confirm that the invoice is legitimate and ready for payment.
+
+If there are milestones missing from the invoice that are not yet beyond their due date according to the SOW, do not flag them as discrepancies.
+If the payment terms on the invoice are different from the SOW, assume the SOW is correct.
+
+In your response:
+- Provide a statement of valid or invalid for the invoice.
+- Create separate sections for the invoice and the milestone validation.
+- Provide a detailed summary of the validation results, including any discrepancies or anomalies found between the invoice and the SOW.
+- If any discrepancies or anomalies are found, you should provide detailed feedback on the issues discovered, like including dollar amounts, line items, and due dates.
+- If there are any discrepancies, flag the invoice for further review.
+
+At the very end of the response, return only &#39;[PASSED]&#39; or &#39;[FAILED]&#39; to indicate if the invoice passed or failed validation.
+</code></pre></div></td></tr></table></div>
+<p>The system prompt is also adding additional context of todays date. This is because the LLM doesn't know what the date is, and since Invoices and line items are date sensitive, the LLM needs to know the current date in order to more accurately perform date validations.</p>
+<p>At the end of the system prompt is instruction for it to add the values of <code>[PASSED]</code> or <code>[FAILED]</code> at the end of the output to indicate whether it passed or failed validation. This will be used by the code to more easily determine a boolean of true/false to insert into the database later that indicates the pass or fail state.</p>
+<h3 id="step-3-construct-full-prompt-with-rag">Step 3: Construct Full Prompt with RAG<a class="headerlink" href="#step-3-construct-full-prompt-with-rag" title="Permanent link">&para;</a></h3>
+<p>The next step is to construct the full prompt for LangChain to use, in addition to specify the tools that will be used to implement a retrieval augmented generation (RAG) pattern.</p>
+<p>With most of the instructions of how to perform the validation contained within the system prompt, the user prompt only needs to be simple in telling the AI what to do. In this application, the user prompt is just telling the AI to perform an invoice validation along with providing the context of the id of the invoice to validate.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">src/api/app/routers/validation.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">72</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">userMessage</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;validate Invoice with ID of </span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>This user prompt is put together with the system prompt to construct the full prompt that will be sent to the AI.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">src/api/app/routers/validation.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Provide the validation copilot with a persona using the system prompt.</span>
+<span class="n">messages</span> <span class="o">=</span> <span class="p">[{</span> <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">system_prompt</span> <span class="p">}]</span>
+
+<span class="c1"># Add the current user message to the messages list</span>
+<span class="n">userMessage</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;validate Invoice with ID of </span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">userMessage</span><span class="p">})</span>
+
+<span class="c1"># Create a chat prompt template</span>
+<span class="n">prompt</span> <span class="o">=</span> <span class="n">ChatPromptTemplate</span><span class="o">.</span><span class="n">from_messages</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="n">system_prompt</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{input}</span><span class="s2">&quot;</span><span class="p">),</span>
+        <span class="n">MessagesPlaceholder</span><span class="p">(</span><span class="s2">&quot;agent_scratchpad&quot;</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Define tools for the agent</span>
+<span class="n">tools</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">StructuredTool</span><span class="o">.</span><span class="n">from_function</span><span class="p">(</span><span class="n">coroutine</span><span class="o">=</span><span class="n">validate_invoice</span><span class="p">)</span>
+<span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<p>This defines a LangChain tool for implementing the retrieval augmented generation pattern using the <code>validate_invoice</code> method that will be used to retrieve the relevant data from the database to validate the invoice.</p>
+<p>You can expand the section below to see the specific section of code that performs the <code>azure_ai</code> call to generate the document summary, within the database INSERT and UPDATE statements.</p>
+<details class="info" open="open">
+<summary>Retrieve context data from database</summary>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">src/api/app/routers/validation.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">validate_invoice</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Retrieves an Invoice and it&#39;s associated Line Items, SOW, and Milestones.&quot;&quot;&quot;</span>
+
+    <span class="n">pool</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_db_connection_pool</span><span class="p">()</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">pool</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">fetchrow</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM invoices WHERE id = $1;&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">row</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;An invoice with an id of </span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s1"> was not found.&#39;</span><span class="p">)</span>
+        <span class="n">invoice</span> <span class="o">=</span> <span class="n">parse_obj_as</span><span class="p">(</span><span class="n">InvoiceModel</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+
+        <span class="c1"># Get the vendor name</span>
+        <span class="n">vendor_row</span> <span class="o">=</span> <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">fetchrow</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM vendors WHERE id = $1;&#39;</span><span class="p">,</span> <span class="n">invoice</span><span class="o">.</span><span class="n">vendor_id</span><span class="p">)</span>
+        <span class="n">invoice</span><span class="o">.</span><span class="n">vendor</span> <span class="o">=</span> <span class="n">parse_obj_as</span><span class="p">(</span><span class="n">Vendor</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">vendor_row</span><span class="p">))</span>
+
+        <span class="c1"># Get the invoice line items</span>
+        <span class="n">line_item_rows</span> <span class="o">=</span> <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM invoice_line_items WHERE invoice_id = $1;&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span>
+        <span class="n">invoice</span><span class="o">.</span><span class="n">line_items</span> <span class="o">=</span> <span class="p">[</span><span class="n">parse_obj_as</span><span class="p">(</span><span class="n">InvoiceLineItem</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">))</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">line_item_rows</span><span class="p">]</span>
+
+
+
+        <span class="c1"># Get the SOW</span>
+        <span class="n">sow_row</span> <span class="o">=</span> <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">fetchrow</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM sows WHERE id = $1;&#39;</span><span class="p">,</span> <span class="n">invoice</span><span class="o">.</span><span class="n">sow_id</span><span class="p">)</span>
+        <span class="n">sow</span> <span class="o">=</span> <span class="n">parse_obj_as</span><span class="p">(</span><span class="n">SowModel</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">sow_row</span><span class="p">))</span>
+
+        <span class="c1"># Get the milestones</span>
+        <span class="n">milestone_rows</span> <span class="o">=</span> <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM milestones WHERE sow_id = $1;&#39;</span><span class="p">,</span> <span class="n">invoice</span><span class="o">.</span><span class="n">sow_id</span><span class="p">)</span>
+        <span class="n">sow</span><span class="o">.</span><span class="n">milestones</span> <span class="o">=</span> <span class="p">[</span><span class="n">parse_obj_as</span><span class="p">(</span><span class="n">MilestoneModel</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">))</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">milestone_rows</span><span class="p">]</span>
+
+        <span class="c1"># Get the deliverables for each milestone</span>
+        <span class="k">for</span> <span class="n">milestone</span> <span class="ow">in</span> <span class="n">sow</span><span class="o">.</span><span class="n">milestones</span><span class="p">:</span>
+            <span class="n">deliverable_rows</span> <span class="o">=</span> <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM deliverables WHERE milestone_id = $1;&#39;</span><span class="p">,</span> <span class="n">milestone</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+            <span class="n">milestone</span><span class="o">.</span><span class="n">deliverables</span> <span class="o">=</span> <span class="n">parse_obj_as</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">Deliverable</span><span class="p">],</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">deliverable_rows</span><span class="p">])</span>
+
+
+    <span class="k">return</span> <span class="n">invoice</span><span class="p">,</span> <span class="n">sow</span>
+</code></pre></div></td></tr></table></div>
+</details>
+<h3 id="step-4-invoke-the-ai">Step 4: Invoke the AI<a class="headerlink" href="#step-4-invoke-the-ai" title="Permanent link">&para;</a></h3>
+<p>With the prompt built and the RAG tools defined, the AI can now be invoked to perform the validation and generate the response.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">src/api/app/routers/validation.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Invoke the agent to perform a chat completion that provides the validation results.</span>
+<span class="n">completion</span> <span class="o">=</span> <span class="k">await</span> <span class="n">agent_executor</span><span class="o">.</span><span class="n">ainvoke</span><span class="p">({</span><span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="n">userMessage</span><span class="p">})</span>
+<span class="n">validationResult</span> <span class="o">=</span> <span class="n">completion</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="step-5-parse-our-passed-or-failed-state">Step 5: Parse our passed or failed state<a class="headerlink" href="#step-5-parse-our-passed-or-failed-state" title="Permanent link">&para;</a></h3>
+<p>Now that the generative AI response is returned with the validation results, the <code>[PASSED]</code> or <code>[FAILED]</code> values the system prompt told the AI to add to the end of the response can be parsed out. This will be used to set a true / false in the database to more easily indicate if the validation passed or failed.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">src/api/app/routers/validation.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Check if validationResult contains [PASSED] or [FAILED]</span>
+<span class="c1"># This is based on the prompt telling the AI to return either [PASSED] or [FAILED]</span>
+<span class="c1"># at the end of the response to indicate if the invoice passed or failed validation.</span>
+<span class="n">validation_passed</span> <span class="o">=</span> <span class="n">validationResult</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;[PASSED]&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="step-6-insert-validation-result-into-database">Step 6: Insert Validation Result into database<a class="headerlink" href="#step-6-insert-validation-result-into-database" title="Permanent link">&para;</a></h3>
+<p>With the validation response generated and a passed or failed result, the validation results can now be inserted into the database, and the response returned from the REST API.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">src/api/app/routers/validation.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Write validation result to database</span>
+<span class="n">pool</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_db_connection_pool</span><span class="p">()</span>
+<span class="k">async</span> <span class="k">with</span> <span class="n">pool</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    INSERT INTO invoice_validation_results (invoice_id, datestamp, result, validation_passed)</span>
+<span class="s1">    VALUES ($1, $2, $3, $4);</span>
+<span class="s1">    &#39;&#39;&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">(),</span> <span class="n">validationResult</span><span class="p">,</span> <span class="n">validation_passed</span><span class="p">)</span>
+
+<span class="k">return</span> <span class="n">validationResult</span>
+</code></pre></div></td></tr></table></div>
+<p>This completes the Validation step of the workflow process.</p>
+<hr />
+<h2 id="sow-validation-workflow">SOW Validation Workflow<a class="headerlink" href="#sow-validation-workflow" title="Permanent link">&para;</a></h2>
+<p>The validation workflow for SOWs is built using the same retrieval augmented generation (RAG) pattern, with a system prompt that is written specifically for the unique validation requirements of SOWs.</p>
+<p>The system prompt for validating SOWs is located within the <code>src/api/app/prompts/sow_validation.txt</code> file. In the next section, we'll review the structure and formatting of the SOW and Invoice validation system prompts.</p>
+<p>The user prompt for the SOW validation tells the AI to validate a SOW and gives it the id of the SOW to validate.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">src/api/app/routers/validation.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">124</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">userMessage</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;validate SOW with ID </span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>The RAG part of the SOW validation is setup with a LangChain tool using the <code>validate_sow</code> method within the <code>src/api/app/routers/validation.py</code> file.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">src/api/app/routers/validation.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">tools</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">StructuredTool</span><span class="o">.</span><span class="n">from_function</span><span class="p">(</span><span class="n">coroutine</span><span class="o">=</span><span class="n">validate_sow</span><span class="p">)</span>
+<span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<p>This method is used to retrieve the SOW data (sow, milestones, and deliverables) from the database for the context needed to perform the validation.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">src/api/app/routers/validation.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">validate_sow</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Retrieves a SOW and it&#39;s associated Milestones and Deliverables.&quot;&quot;&quot;</span>
+
+    <span class="n">pool</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_db_connection_pool</span><span class="p">()</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">pool</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">fetchrow</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM sows WHERE id = $1;&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">row</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A SOW with an id of </span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s1"> was not found.&#39;</span><span class="p">)</span>
+        <span class="n">sow</span> <span class="o">=</span> <span class="n">parse_obj_as</span><span class="p">(</span><span class="n">SowModel</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+
+        <span class="c1"># Get the milestones</span>
+        <span class="n">milestone_rows</span> <span class="o">=</span> <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM milestones WHERE sow_id = $1;&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span>
+        <span class="n">sow</span><span class="o">.</span><span class="n">milestones</span> <span class="o">=</span> <span class="p">[</span><span class="n">parse_obj_as</span><span class="p">(</span><span class="n">MilestoneModel</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">))</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">milestone_rows</span><span class="p">]</span>
+
+        <span class="c1"># Get the deliverables for each milestone</span>
+        <span class="k">for</span> <span class="n">milestone</span> <span class="ow">in</span> <span class="n">sow</span><span class="o">.</span><span class="n">milestones</span><span class="p">:</span>
+            <span class="n">deliverable_rows</span> <span class="o">=</span> <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM deliverables WHERE milestone_id = $1;&#39;</span><span class="p">,</span> <span class="n">milestone</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+            <span class="n">milestone</span><span class="o">.</span><span class="n">deliverables</span> <span class="o">=</span> <span class="n">parse_obj_as</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">Deliverable</span><span class="p">],</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">deliverable_rows</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">sow</span>
+</code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="perform-document-validation">Perform Document Validation<a class="headerlink" href="#perform-document-validation" title="Permanent link">&para;</a></h2>
+<p>Accessing the UserPortal application in your deployment of the application for this workshop will allow you to upload documents and perform validations for SOWs and Invoices.</p>
+<p>Follow these steps to upload a document and exercise the document ingestion workflow process:</p>
+<ol>
+<li>Open the browser and navigate to the deployed UserPortal application.</li>
+<li>Within the left-side navigation of the application, click on either "<strong>SOWs</strong>" or "<strong>Invoices</strong>"" for the document type you want to upload, analyze and validate.</li>
+<li>
+<p>On the page that lists the <strong>SOWs</strong> or <strong>Invoices</strong>, click the <strong>New</strong> button in the upper-right.</p>
+<p><img alt="Screenshot of SOWs list page with SOWs menu and New button highlighted" src="../../img/userportal-sows-new-button.png" /></p>
+</li>
+<li>
+<p>On the <strong>New</strong> page, select the <strong>Vendor</strong> and select the document (<code>.pdf</code> file) to upload, then click <strong>Analyze Document</strong>.</p>
+<p><img alt="Screenshot of the New SOW page." src="../../img/userportal-sows-new-upload.png" /></p>
+</li>
+<li>
+<p>The Document workflow will initiate with the <strong>Analyze</strong> step, and the UI will display a message showing that it's running.</p>
+<p><img alt="Screenshot of SOW analyzing running" src="../../img/userportal-sow-analyzing-message.png" /></p>
+</li>
+<li>
+<p>Once <strong>Analyzing</strong> is completed, then <strong>Validating</strong> will be run, and you will see the UI indicate this.</p>
+<p><img alt="Screenshot of SOW validating running" src="../../img/userportal-sow-validating-message.png" /></p>
+</li>
+<li>
+<p>Once the <strong>Validating</strong> is completed, the application will display the validation results with the pass or fail indicated. These results are the full response from the AI when performing the validation.</p>
+<p><img alt="Screenshot of SOW Validation Results" src="../../img/userportal-sow-validation-results-finished.png" /></p>
+</li>
+<li>
+<p>Dismissing this dialog (clicking <strong>Close</strong>) will enable you to see the full details of the record.</p>
+</li>
+<li>
+<p>On both the SOW and Invoice edit pages, you can scroll down to the bottom to view the history of validations that have been performed on the record. You will also find a <strong>Run Manual Validation</strong> button that is setup to enable re-running of just the validation step of the workflow.</p>
+<p><img alt="Screenshot of SOW edit page showing validation history and 'run manual validation' button" src="../../img/userportal-sow-edit-validation-history.png" /></p>
+</li>
+<li>
+<p>These steps can be repeated for uploading, analyzing and validating both SOWs and Invoices within the application.</p>
+</li>
+</ol>
+<hr />
+<h2 id="additional-learning-references">Additional Learning References<a class="headerlink" href="#additional-learning-references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://learn.microsoft.com/samples/azure-samples/function-python-ai-langchain/function-python-ai-langchain/">LangChain with Azure OpenAI and ChatPGT using Python</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../03/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 4.3 Summarize documents">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                4.3 Summarize documents
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../05/" class="md-footer__link md-footer__link--next" aria-label="Next: 4.5 Review Validation Prompts">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                4.5 Review Validation Prompts
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 - present Microsoft
+
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.expand", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "navigation.footer", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+  <!-- Add scripts that need to run before here -->
+  
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  <!-- Add scripts that need to run afterwards here -->
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    
+
+  </body>
+</html>
