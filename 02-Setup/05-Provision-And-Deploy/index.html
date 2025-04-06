@@ -740,7 +740,7 @@
         
   
   <span class="md-ellipsis">
-    2.1 Install Software
+    2.1 Development Environment Setup Options
     
   </span>
   
@@ -875,6 +875,15 @@
   <a href="#start-docker-desktop" class="md-nav__link">
     <span class="md-ellipsis">
       Start Docker Desktop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-and-open-dev-container-only-if-you-chosen-the-dev-container-setup-option-previously" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build and Open Dev Container (Only if you chosen the Dev Container Setup Option Previously)
     </span>
   </a>
   
@@ -2053,6 +2062,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#build-and-open-dev-container-only-if-you-chosen-the-dev-container-setup-option-previously" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build and Open Dev Container (Only if you chosen the Dev Container Setup Option Previously)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#authenticate-with-azure" class="md-nav__link">
     <span class="md-ellipsis">
       Authenticate With Azure
@@ -2140,6 +2158,23 @@
 <p>Look for the Docker icon in your system tray or menu bar to confirm it is running.</p>
 </li>
 </ol>
+<h2 id="build-and-open-dev-container-only-if-you-chosen-the-dev-container-setup-option-previously">Build and Open Dev Container (Only if you chosen the Dev Container Setup Option Previously)<a class="headerlink" href="#build-and-open-dev-container-only-if-you-chosen-the-dev-container-setup-option-previously" title="Permanent link">&para;</a></h2>
+<p>In this step you will open and build your dev container in VS Code.  After you complete this, you can complete the remaining steps in this page by running all commands inside
+your dev container command line not your local operating system command line.</p>
+<ol>
+<li>Open VS Code</li>
+<li>Open Folder of your locally cloned repo</li>
+<li>Press <code>Ctrl+Shift+P</code> to open the command palette</li>
+<li>Type: <code>Dev Container</code> and choose "Rebuild and Reopen in Container"</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Dev Container Build Process</p>
+<p>This will kick off a docker build process where you dev container will be built by docker desktop.  Let this process run, it may take a few minutes the first time.
+You will see VS Code flash and load into a new project environment.  Once the process completes, you can open a new terminal in VS Code.  You will notice the shell will
+look a little different as now you are in an Ubuntu Linux Container.</p>
+<p>From here on out in the documentation, run your commands in the dev container shell.  Except for tools like pgAdmin, you will
+still run these in your main operating system not the dev container.</p>
+</div>
 <h2 id="authenticate-with-azure">Authenticate With Azure<a class="headerlink" href="#authenticate-with-azure" title="Permanent link">&para;</a></h2>
 <p>Before running the <code>azd up</code> command, you must authenticate your VS Code environment to Azure.</p>
 <ol>
