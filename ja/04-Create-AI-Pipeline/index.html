@@ -15,6 +15,10 @@
         <link rel="canonical" href="https://azure-samples.github.io/postgres-sa-byoac/ja/04-Create-AI-Pipeline/">
       
       
+        <link rel="prev" href="../03-Integrate-AI-Into-PostgreSQL/05/">
+      
+      
+        <link rel="next" href="01/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -92,7 +96,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Build your own advanced AI Copilot with PostgreSQL: Workshop Guide" class="md-header__button md-logo" aria-label="Build your own advanced AI Copilot with PostgreSQL: Workshop Guide" data-md-component="logo">
       
-  <img src="https://github.com/azure-samples/postgres-sa-byoac/en/img/postgresql.svg" alt="logo">
+  <img src="../../img/postgresql.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -166,7 +170,7 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="https://azure-samples.github.io/postgres-sa-byoac/en/" hreflang="en" class="md-select__link">
+            <a href="https://azure-samples.github.io/postgres-sa-byoac/" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
@@ -246,12 +250,12 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../en/" class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
     
   
-  Home
+  Before You Begin
 
       </a>
     </li>
@@ -265,12 +269,12 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../en/01-Introduction/01-App-Scenario/" class="md-tabs__link">
+        <a href="../../01-Introduction/" class="md-tabs__link">
           
   
     
   
-  01 - Introduction
+  01 Introduction
 
         </a>
       </li>
@@ -285,12 +289,12 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../en/02-Setup/00-Prerequisites/" class="md-tabs__link">
+        <a href="../../02-Setup/" class="md-tabs__link">
           
   
     
   
-  02 - Setup
+  02 Setup
 
         </a>
       </li>
@@ -305,12 +309,12 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../en/03-Integrate-AI-Into-PostgreSQL/01/" class="md-tabs__link">
+        <a href="../../03-Integrate-AI-Into-PostgreSQL/" class="md-tabs__link">
           
   
     
   
-  03 - Integrate AI Into PostgreSQL
+  03 Integrate AI Into PostgreSQL
 
         </a>
       </li>
@@ -325,12 +329,12 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../en/04-Create-AI-Pipeline/01/" class="md-tabs__link">
+        <a href="../../04-Create-AI-Pipeline/" class="md-tabs__link">
           
   
     
   
-  04 - Create AI Pipeline
+  04 Create AI Pipeline
 
         </a>
       </li>
@@ -345,12 +349,12 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../en/05-Build-Copilot/01/" class="md-tabs__link">
+        <a href="../../05-Build-Copilot/" class="md-tabs__link">
           
   
     
   
-  05 - Build Copilot
+  05 Build Copilot
 
         </a>
       </li>
@@ -365,12 +369,12 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../en/06-Improve-RAG-Accuracy/01/" class="md-tabs__link">
+        <a href="../../06-Improve-RAG-Accuracy/" class="md-tabs__link">
           
   
     
   
-  06 - Improve RAG Accuracy
+  06 Improve RAG Accuracy
 
         </a>
       </li>
@@ -385,12 +389,12 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../en/07-Redeploy/" class="md-tabs__link">
+        <a href="../../07-Redeploy/" class="md-tabs__link">
           
   
     
   
-  07 - Redeploy
+  07 Redeploy
 
         </a>
       </li>
@@ -405,12 +409,34 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../en/Tear-Down/" class="md-tabs__link">
+        <a href="../../Tear-Down/" class="md-tabs__link">
           
   
     
   
   Tear Down
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+    
+  
+  Ja
 
         </a>
       </li>
@@ -448,7 +474,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Build your own advanced AI Copilot with PostgreSQL: Workshop Guide" class="md-nav__button md-logo" aria-label="Build your own advanced AI Copilot with PostgreSQL: Workshop Guide" data-md-component="logo">
       
-  <img src="https://github.com/azure-samples/postgres-sa-byoac/en/img/postgresql.svg" alt="logo">
+  <img src="../../img/postgresql.svg" alt="logo">
 
     </a>
     Build your own advanced AI Copilot with PostgreSQL: Workshop Guide
@@ -475,11 +501,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/" class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Home
+    Before You Begin
     
   </span>
   
@@ -499,15 +525,15 @@
     
       
         
-      
-        
-      
-        
-      
-        
-      
-        
           
+        
+      
+        
+      
+        
+      
+        
+      
         
       
     
@@ -527,11 +553,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../en/01-Introduction/" class="md-nav__link ">
+            <a href="../../01-Introduction/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    01 - Introduction
+    01 Introduction
     
   </span>
   
@@ -548,22 +574,24 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            01 - Introduction
+            01 Introduction
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
               
+            
+              
                 
   
   
   
   
     <li class="md-nav__item">
-      <a href="../../en/01-Introduction/01-App-Scenario/" class="md-nav__link">
+      <a href="../../01-Introduction/01-App-Scenario/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    App Scenario
+    1.1 The App Scenario
     
   </span>
   
@@ -581,11 +609,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/01-Introduction/02-App-Architecture/" class="md-nav__link">
+      <a href="../../01-Introduction/02-App-Architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    App Architecture
+    1.2 Application Architecture
     
   </span>
   
@@ -603,11 +631,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/01-Introduction/03-Azure-Cost/" class="md-nav__link">
+      <a href="../../01-Introduction/03-Azure-Cost/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Azure Cost
+    1.3 Azure Cost Estimate
     
   </span>
   
@@ -625,11 +653,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/01-Introduction/04-Data-Structure/" class="md-nav__link">
+      <a href="../../01-Introduction/04-Data-Structure/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Data Structure
+    1.4 Provided Artifacts
     
   </span>
   
@@ -638,8 +666,6 @@
     </li>
   
 
-              
-            
               
             
           </ul>
@@ -659,25 +685,25 @@
     
       
         
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
           
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
         
       
     
@@ -697,11 +723,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../en/02-Setup/" class="md-nav__link ">
+            <a href="../../02-Setup/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    02 - Setup
+    02 Setup
     
   </span>
   
@@ -718,22 +744,24 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            02 - Setup
+            02 Setup
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
               
+            
+              
                 
   
   
   
   
     <li class="md-nav__item">
-      <a href="../../en/02-Setup/00-Prerequisites/" class="md-nav__link">
+      <a href="../../02-Setup/00-Prerequisites/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Prerequisites
+    2.0 Prerequisites
     
   </span>
   
@@ -751,11 +779,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/02-Setup/01-Install-Software/" class="md-nav__link">
+      <a href="../../02-Setup/01-Install-Software/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Install Software
+    2.1 Install Software
     
   </span>
   
@@ -773,11 +801,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/02-Setup/02-Fork-Repo/" class="md-nav__link">
+      <a href="../../02-Setup/02-Fork-Repo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Fork Repo
+    2.2 Fork Repo
     
   </span>
   
@@ -795,11 +823,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/02-Setup/03-Select-Azure-Region/" class="md-nav__link">
+      <a href="../../02-Setup/03-Select-Azure-Region/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Select Azure Region
+    2.3 Select An Azure Region
     
   </span>
   
@@ -817,11 +845,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/02-Setup/04-Verify-Azure-Quota/" class="md-nav__link">
+      <a href="../../02-Setup/04-Verify-Azure-Quota/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Verify Azure Quota
+    2.4 Verify Azure Quota
     
   </span>
   
@@ -839,11 +867,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/02-Setup/05-Provision-And-Deploy/" class="md-nav__link">
+      <a href="../../02-Setup/05-Provision-And-Deploy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Provision and Deploy
+    2.5 Provision and Deploy
     
   </span>
   
@@ -861,11 +889,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/02-Setup/06-Validation/" class="md-nav__link">
+      <a href="../../02-Setup/06-Validation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Validation
+    2.6 Validate Deployment
     
   </span>
   
@@ -883,11 +911,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/02-Setup/07-Setup-Dev-Env/" class="md-nav__link">
+      <a href="../../02-Setup/07-Setup-Dev-Env/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Setup Dev Env
+    2.7 Setup Dev Environment
     
   </span>
   
@@ -905,11 +933,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/02-Setup/08-Review-Manual-Process/" class="md-nav__link">
+      <a href="../../02-Setup/08-Review-Manual-Process/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Review Manual Process
+    2.8 Review Manual Process
     
   </span>
   
@@ -918,8 +946,6 @@
     </li>
   
 
-              
-            
               
             
           </ul>
@@ -939,17 +965,17 @@
     
       
         
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
           
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
         
       
     
@@ -969,11 +995,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../en/03-Integrate-AI-Into-PostgreSQL/" class="md-nav__link ">
+            <a href="../../03-Integrate-AI-Into-PostgreSQL/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    03 - Integrate AI Into PostgreSQL
+    03 Integrate AI Into PostgreSQL
     
   </span>
   
@@ -990,22 +1016,24 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            03 - Integrate AI Into PostgreSQL
+            03 Integrate AI Into PostgreSQL
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
               
+            
+              
                 
   
   
   
   
     <li class="md-nav__item">
-      <a href="../../en/03-Integrate-AI-Into-PostgreSQL/01/" class="md-nav__link">
+      <a href="../../03-Integrate-AI-Into-PostgreSQL/01/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 1
+    3.1 Install extensions
     
   </span>
   
@@ -1023,11 +1051,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/03-Integrate-AI-Into-PostgreSQL/02/" class="md-nav__link">
+      <a href="../../03-Integrate-AI-Into-PostgreSQL/02/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 2
+    3.2 Configure the Azure AI extension
     
   </span>
   
@@ -1045,11 +1073,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/03-Integrate-AI-Into-PostgreSQL/03/" class="md-nav__link">
+      <a href="../../03-Integrate-AI-Into-PostgreSQL/03/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 3
+    3.3 Enable vector storage
     
   </span>
   
@@ -1067,11 +1095,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/03-Integrate-AI-Into-PostgreSQL/04/" class="md-nav__link">
+      <a href="../../03-Integrate-AI-Into-PostgreSQL/04/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 4
+    3.4 Optimize Vector Query Performance
     
   </span>
   
@@ -1089,11 +1117,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/03-Integrate-AI-Into-PostgreSQL/05/" class="md-nav__link">
+      <a href="../../03-Integrate-AI-Into-PostgreSQL/05/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 5
+    3.5 Vectorize data
     
   </span>
   
@@ -1102,8 +1130,6 @@
     </li>
   
 
-              
-            
               
             
           </ul>
@@ -1123,17 +1149,17 @@
     
       
         
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
           
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
         
       
     
@@ -1153,11 +1179,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../en/04-Create-AI-Pipeline/" class="md-nav__link ">
+            <a href="../../04-Create-AI-Pipeline/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    04 - Create AI Pipeline
+    04 Create AI Pipeline
     
   </span>
   
@@ -1174,22 +1200,24 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            04 - Create AI Pipeline
+            04 Create AI Pipeline
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
               
+            
+              
                 
   
   
   
   
     <li class="md-nav__item">
-      <a href="../../en/04-Create-AI-Pipeline/01/" class="md-nav__link">
+      <a href="../../04-Create-AI-Pipeline/01/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 1
+    4.1 Extract Data with Document Intelligence
     
   </span>
   
@@ -1207,11 +1235,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/04-Create-AI-Pipeline/02/" class="md-nav__link">
+      <a href="../../04-Create-AI-Pipeline/02/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 2
+    4.2 Configure Structural Element-Based Chunking
     
   </span>
   
@@ -1229,11 +1257,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/04-Create-AI-Pipeline/03/" class="md-nav__link">
+      <a href="../../04-Create-AI-Pipeline/03/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 3
+    4.3 Summarize documents
     
   </span>
   
@@ -1251,11 +1279,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/04-Create-AI-Pipeline/04/" class="md-nav__link">
+      <a href="../../04-Create-AI-Pipeline/04/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 4
+    4.4 Validate Data with Azure OpenAI
     
   </span>
   
@@ -1273,11 +1301,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/04-Create-AI-Pipeline/05/" class="md-nav__link">
+      <a href="../../04-Create-AI-Pipeline/05/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 5
+    4.5 Review Validation Prompts
     
   </span>
   
@@ -1286,8 +1314,6 @@
     </li>
   
 
-              
-            
               
             
           </ul>
@@ -1307,23 +1333,23 @@
     
       
         
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
           
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
         
       
     
@@ -1343,11 +1369,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../en/05-Build-Copilot/" class="md-nav__link ">
+            <a href="../../05-Build-Copilot/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    05 - Build Copilot
+    05 Build Copilot
     
   </span>
   
@@ -1364,22 +1390,24 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
-            05 - Build Copilot
+            05 Build Copilot
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
               
+            
+              
                 
   
   
   
   
     <li class="md-nav__item">
-      <a href="../../en/05-Build-Copilot/01/" class="md-nav__link">
+      <a href="../../05-Build-Copilot/01/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 1
+    5.1 Explore the API Codebase
     
   </span>
   
@@ -1397,11 +1425,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/05-Build-Copilot/02/" class="md-nav__link">
+      <a href="../../05-Build-Copilot/02/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 2
+    5.2 Review RAG Design
     
   </span>
   
@@ -1419,11 +1447,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/05-Build-Copilot/03/" class="md-nav__link">
+      <a href="../../05-Build-Copilot/03/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 3
+    5.3 Leverage LangChain Orchestration
     
   </span>
   
@@ -1441,11 +1469,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/05-Build-Copilot/04/" class="md-nav__link">
+      <a href="../../05-Build-Copilot/04/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 4
+    5.4 Enable the Chat Endpoint
     
   </span>
   
@@ -1463,11 +1491,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/05-Build-Copilot/05/" class="md-nav__link">
+      <a href="../../05-Build-Copilot/05/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 5
+    5.5 Test the Chat API
     
   </span>
   
@@ -1485,11 +1513,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/05-Build-Copilot/06/" class="md-nav__link">
+      <a href="../../05-Build-Copilot/06/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 6
+    5.6 Add Copilot Chat To UI
     
   </span>
   
@@ -1507,11 +1535,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/05-Build-Copilot/07/" class="md-nav__link">
+      <a href="../../05-Build-Copilot/07/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 7
+    5.7 Test the UI Copilot Chat
     
   </span>
   
@@ -1529,11 +1557,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/05-Build-Copilot/08/" class="md-nav__link">
+      <a href="../../05-Build-Copilot/08/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 8
+    5.8 Refine the Copilot Prompt
     
   </span>
   
@@ -1542,8 +1570,6 @@
     </li>
   
 
-              
-            
               
             
           </ul>
@@ -1563,23 +1589,23 @@
     
       
         
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
           
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
         
       
     
@@ -1599,11 +1625,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../en/06-Improve-RAG-Accuracy/" class="md-nav__link ">
+            <a href="../../06-Improve-RAG-Accuracy/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    06 - Improve RAG Accuracy
+    06 Improve RAG Accuracy
     
   </span>
   
@@ -1620,22 +1646,24 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
-            06 - Improve RAG Accuracy
+            06 Improve RAG Accuracy
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
               
+            
+              
                 
   
   
   
   
     <li class="md-nav__item">
-      <a href="../../en/06-Improve-RAG-Accuracy/01/" class="md-nav__link">
+      <a href="../../06-Improve-RAG-Accuracy/01/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 1
+    6.1 Understand Semantic Ranking
     
   </span>
   
@@ -1653,11 +1681,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/06-Improve-RAG-Accuracy/02/" class="md-nav__link">
+      <a href="../../06-Improve-RAG-Accuracy/02/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 2
+    6.2 Use Semantic Ranking in PostgreSQL
     
   </span>
   
@@ -1675,11 +1703,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/06-Improve-RAG-Accuracy/03/" class="md-nav__link">
+      <a href="../../06-Improve-RAG-Accuracy/03/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 3
+    6.3 Update Copilot With Semantic Ranking
     
   </span>
   
@@ -1697,11 +1725,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/06-Improve-RAG-Accuracy/04/" class="md-nav__link">
+      <a href="../../06-Improve-RAG-Accuracy/04/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 4
+    6.4 Review GraphRAG
     
   </span>
   
@@ -1719,11 +1747,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/06-Improve-RAG-Accuracy/05/" class="md-nav__link">
+      <a href="../../06-Improve-RAG-Accuracy/05/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 5
+    6.5 Enable AGE
     
   </span>
   
@@ -1741,11 +1769,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/06-Improve-RAG-Accuracy/06/" class="md-nav__link">
+      <a href="../../06-Improve-RAG-Accuracy/06/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 6
+    6.6 Export Graph Data
     
   </span>
   
@@ -1763,11 +1791,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/06-Improve-RAG-Accuracy/07/" class="md-nav__link">
+      <a href="../../06-Improve-RAG-Accuracy/07/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 7
+    6.7 Create Graph Database
     
   </span>
   
@@ -1785,11 +1813,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../en/06-Improve-RAG-Accuracy/08/" class="md-nav__link">
+      <a href="../../06-Improve-RAG-Accuracy/08/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Step 8
+    6.8 Update Copilot With GraphRAG
     
   </span>
   
@@ -1798,8 +1826,6 @@
     </li>
   
 
-              
-            
               
             
           </ul>
@@ -1839,11 +1865,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../en/07-Redeploy/" class="md-nav__link ">
+            <a href="../../07-Redeploy/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    07 - Redeploy
+    07 Redeploy
     
   </span>
   
@@ -1855,7 +1881,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
-            07 - Redeploy
+            07 Redeploy
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1898,7 +1924,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../en/Tear-Down/" class="md-nav__link ">
+            <a href="../../Tear-Down/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1918,6 +1944,1535 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Ja
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Ja
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../01-Introduction/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    01 Introduction
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10_2" id="__nav_10_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_2">
+            <span class="md-nav__icon md-icon"></span>
+            01 Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-Introduction/01-App-Scenario/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.1 アプリケーションシナリオ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-Introduction/02-App-Architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.2 アプリケーションアーキテクチャ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-Introduction/03-Azure-Cost/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.3 Azure コスト見積もり
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-Introduction/04-Data-Structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.4 提供されるアーティファクト
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../02-Setup/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    02 Setup
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10_3" id="__nav_10_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_3">
+            <span class="md-nav__icon md-icon"></span>
+            02 Setup
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Setup/00-Prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.0 前提条件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Setup/01-Install-Software/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 ソフトウェアのインストール
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Setup/02-Fork-Repo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 リポジトリをフォークする
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Setup/03-Select-Azure-Region/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.3 Azure リージョンを選択する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Setup/04-Verify-Azure-Quota/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.4 Azure クォータの確認
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Setup/05-Provision-And-Deploy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.5 プロビジョニングとデプロイ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Setup/06-Validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.6 デプロイの検証
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Setup/07-Setup-Dev-Env/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.7 開発環境のセットアップ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Setup/08-Review-Manual-Process/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.8 手動プロセスのレビュー
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../03-Integrate-AI-Into-PostgreSQL/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    03 Integrate AI Into PostgreSQL
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10_4" id="__nav_10_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4">
+            <span class="md-nav__icon md-icon"></span>
+            03 Integrate AI Into PostgreSQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Integrate-AI-Into-PostgreSQL/01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.1 拡張機能のインストール
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Integrate-AI-Into-PostgreSQL/02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.2 Azure AI 拡張機能の設定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Integrate-AI-Into-PostgreSQL/03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.3 ベクターストレージを有効にする
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Integrate-AI-Into-PostgreSQL/04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.4 ベクタークエリのパフォーマンスを最適化する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Integrate-AI-Into-PostgreSQL/05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.5 データのベクトル化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
+  
+  <span class="md-ellipsis">
+    04 Create AI Pipeline
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            04 Create AI Pipeline
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.1 ドキュメントインテリジェンスによるデータ抽出
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.2 構造要素ベースのチャンク設定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.3 ドキュメントの要約
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.4 Azure OpenAIを使用したデータの検証
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.5 検証プロンプトのレビュー
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../05-Build-Copilot/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    05 Build Copilot
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            05 Build Copilot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-Build-Copilot/01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.1 APIコードベースの探索
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-Build-Copilot/02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.2 RAGデザインのレビュー
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-Build-Copilot/03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.3 LangChainオーケストレーションの活用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-Build-Copilot/04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.4 チャットエンドポイントを有効にする
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-Build-Copilot/05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.5 チャット API のテスト
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-Build-Copilot/06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.6 CopilotチャットをUIに追加する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-Build-Copilot/07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.7 UI Copilot チャットのテスト
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-Build-Copilot/08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.8 Copilotプロンプトの改善
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../06-Improve-RAG-Accuracy/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    06 Improve RAG Accuracy
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            06 Improve RAG Accuracy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Improve-RAG-Accuracy/01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.1 セマンティックランキングを理解する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Improve-RAG-Accuracy/02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.2 PostgreSQLでセマンティックランキングを使用する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Improve-RAG-Accuracy/03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.3 セマンティックランキングでコパイロットを更新する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Improve-RAG-Accuracy/04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.4 GraphRAGのレビュー
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Improve-RAG-Accuracy/05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.5 AGEを有効にする
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Improve-RAG-Accuracy/06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.6 グラフデータのエクスポート
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Improve-RAG-Accuracy/07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.7 グラフデータベースの作成
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Improve-RAG-Accuracy/08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.8 GraphRAGでCopilotを更新する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../07-Redeploy/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    07 Redeploy
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_8">
+            <span class="md-nav__icon md-icon"></span>
+            07 Redeploy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../Tear-Down/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Tear Down
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_9">
+            <span class="md-nav__icon md-icon"></span>
+            Tear Down
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
               
             
           </ul>
@@ -2043,6 +3598,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../03-Integrate-AI-Into-PostgreSQL/05/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3.5 データのベクトル化">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                3.5 データのベクトル化
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="01/" class="md-footer__link md-footer__link--next" aria-label="Next: 4.1 ドキュメントインテリジェンスによるデータ抽出">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                4.1 ドキュメントインテリジェンスによるデータ抽出
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
