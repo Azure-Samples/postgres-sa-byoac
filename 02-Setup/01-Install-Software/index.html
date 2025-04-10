@@ -812,9 +812,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#install-wsl-2-only-if-using-windows" class="md-nav__link">
+  <a href="#install-wsl-2-and-ubuntu-only-if-using-windows" class="md-nav__link">
     <span class="md-ellipsis">
-      Install WSL 2 (Only if using Windows)
+      Install WSL 2 and Ubuntu (Only if using Windows)
     </span>
   </a>
   
@@ -2189,9 +2189,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#install-wsl-2-only-if-using-windows" class="md-nav__link">
+  <a href="#install-wsl-2-and-ubuntu-only-if-using-windows" class="md-nav__link">
     <span class="md-ellipsis">
-      Install WSL 2 (Only if using Windows)
+      Install WSL 2 and Ubuntu (Only if using Windows)
     </span>
   </a>
   
@@ -2377,7 +2377,7 @@ how to do either option.</p>
 <p>The required development environment uses a Visual Studio (VS) Code editor with a Python runtime. To complete this lab on your own computer, you must install the following required software. On completing this step, you should have installed:</p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Windows Terminal (Only if using Windows)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> WSL 2 (Only if using Windows)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> WSL 2 and Ubuntu (Only if using Windows)</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Git</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Docker desktop</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Visual Studio Code</li>
@@ -2388,19 +2388,35 @@ how to do either option.</p>
 <ol>
 <li>From Microsoft Store: <a href="https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701">Windows Terminal</a></li>
 </ol>
-<h3 id="install-wsl-2-only-if-using-windows">Install WSL 2 (Only if using Windows)<a class="headerlink" href="#install-wsl-2-only-if-using-windows" title="Permanent link">&para;</a></h3>
+<h3 id="install-wsl-2-and-ubuntu-only-if-using-windows">Install WSL 2 and Ubuntu (Only if using Windows)<a class="headerlink" href="#install-wsl-2-and-ubuntu-only-if-using-windows" title="Permanent link">&para;</a></h3>
 <p>Windows Subsystem for Linux (WSL) is a powerful tool that allows the ability to run Linux based Docker images on the Windows operating system.  Plus, WSL 2 provides advantages to using 
 Docker Desktop on Windows, such as better memory management for large containers.  WSL 2 is needed because the dev container for this solution accelerator is built on an Ubuntu Linux base image.</p>
 <ol>
+<li>
+<p>First we need to install Ubuntu from the Microsoft App Store:</p>
+<ul>
+<li>Open "Microsoft Store" from your Start Menu</li>
+<li>Search for "Ubuntu"</li>
+<li>For the search result titled simply "Ubuntu", select and click "Get" to install</li>
+<li>Reboot if it asks.</li>
+</ul>
+</li>
 <li>
 <p>Open PowerShell as Admin and run:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">wsl</span> <span class="p">-</span><span class="n">-install</span>
 </code></pre></div></td></tr></table></div>
 </li>
 <li>
-<p>It will install WSL 2 and Ubuntu by default.</p>
+<p>It will install WSL 2.</p>
 </li>
 <li>Reboot if it asks.</li>
+<li>
+<p>Test the installation:</p>
+<ul>
+<li>Opening Terminal in PowerShell shell, and type `wsl'</li>
+<li>This should load an Ubuntu Linux Shell command line and if you type <code>ps</code> you will be a list of processes, this means everything works correctly</li>
+</ul>
+</li>
 </ol>
 <h3 id="install-git">Install Git<a class="headerlink" href="#install-git" title="Permanent link">&para;</a></h3>
 <p>Git enables you to manage your code by tracking changes, maintaining a version history, and facilitating collaboration with others. This helps in organizing and maintaining the integrity of your project's development.</p>
