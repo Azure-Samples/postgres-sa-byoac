@@ -2020,7 +2020,7 @@
 <summary>Using your own data?</summary>
 <p>The architecture is designed for flexibility, allowing adaptation to custom datasets beyond the default sample data. If you plan to use your own data, it is recommended to review the database schema, data pipelines, and indexing strategies to ensure compatibility. Suggested changes and guidance for customization are provided in the documentation to help streamline this process.</p>
 </details>
-<p>Throughout this solution accelerator, you will enhance the application with AI capabilities. The application consists of a REACT single page application (SPA) providing the UX (user experience), a backend API written in Python using FastAPI, and various Azure services. The solution implements the following high-level architecture:</p>
+<p>Throughout this solution accelerator, you will enhance the application with AI capabilities. The application consists of a REACT single page application (SPA) providing the frontend, and a backend API written in Python using FastAPI, and various Azure services. The solution implements the following high-level architecture:</p>
 <p><img alt="High-level architecture diagram for the solution" src="../../img/solution-architecture-diagram.png" /></p>
 <div class="admonition tip">
 <p class="admonition-title">Decoupled application architecture</p>
@@ -2041,21 +2041,21 @@
 <p>SOWs, invoices, and related documents are ingested via the Woodgrove Bank Contract Management Portal, a REACT Single Page Application (SPA) accessed through a web browser. Internal users and external vendors can submit documents via the portal.</p>
 </li>
 <li>
-<p>The SPA web app sends uploaded documents directly with the backend API's <code>/documents</code> endpoint.</p>
+<p>The web app sends uploaded documents directly with the backend API's <code>/documents</code> endpoint.</p>
 </li>
 <li>
-<p>The API, hosted as an <a href="https://learn.microsoft.com/azure/container-apps/overview">Azure Container App</a> (ACA), saves the uploaded documents into a container in Azure Blob storage.</p>
+<p>The API, hosted as an <a href="https://learn.microsoft.com/azure/container-apps/overview">Azure Container App</a> (ACA), saves the uploaded documents in Azure Blob storage.</p>
 <ol>
 <li>
 <p>Storing the original documents in blob storage allows raw data to be persisted.</p>
 </li>
 <li>
-<p>Should processing errors be detected or system requirements change, documents can be easily reprocessed.</p>
+<p>If processing errors are detected or system requirements change, documents can be easily reprocessed.</p>
 </li>
 </ol>
 </li>
 <li>
-<p>When new documents are added into blob storage, the Data Ingestion Process on the API is invoked.</p>
+<p>When new documents are added into blob storage:</p>
 <ol>
 <li>
 <p>The data ingestion process handles data extraction and processing by sending uploaded documents to the Azure AI Document Intelligence service.</p>
@@ -2069,7 +2069,7 @@
 </ol>
 </li>
 <li>
-<p>The extracted document data securely written to Azure Database for PostgreSQL flexible server by the API.</p>
+<p>The extracted document data is securely written to Azure Database for PostgreSQL flexible server by the API.</p>
 </li>
 <li>
 <p>As part of the database insert statement, the GenAI capabilities of the <code>azure_ai</code> extension are used to:</p>
