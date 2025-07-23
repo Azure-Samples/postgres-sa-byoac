@@ -1,6 +1,6 @@
 # 2.2 Fork Repo
 
-You must create a copy (known as a fork) of the [PostgreSQL Solution Accelerator: Build your own AI Copilot](http://aka.ms/pg-byoac-repo/) GitHub repo and then clone that onto your local computer so you can work with its contents. After completing this step, you should have:
+You must create a copy (known as a fork) of the [PostgreSQL Solution Accelerator: Build your own AI Copilot](https://aka.ms/pg-byoac-repo/) GitHub repo and then clone that onto your local computer so you can work with its contents. After completing this step, you should have:
 
 - [X] Forked the **PostgreSQL Solution Accelerator: Build your own AI Copilot** repo to your personal GitHub profile
 - [X] Created a local clone of the repo
@@ -10,7 +10,7 @@ You must create a copy (known as a fork) of the [PostgreSQL Solution Accelerator
 
 Forking in GitHub refers to creating a personal copy of a public repository, which allows you to freely experiment with changes without affecting the original project.
 
-1. To fork the repo, open a new browser window or tab and navigate to <http://aka.ms/pg-byoac-repo/>.
+1. To fork the repo, open a new browser window or tab and navigate to <https://aka.ms/pg-byoac-repo/>.
 
 2. Select the **Fork** button to create a copy of the repo in your GitHub profile.
 

@@ -1,6 +1,6 @@
 # Introduction
 
-This solution accelerator is designed as an end-to-end example of a Financial Services Industry AI-enabled application. It demonstrates the implementation of generative AI capabilities to enhance an existing application with AI-driven data validation, vector search, semantic ranking, and GraphRAG on Azure Database for PostgreSQL, and illustrates how they can be combined to deliver high quality responses to financial questions via an intelligent copilot. The app uses a small sample dataset made up of statements of work (SOWs) and invoices. The source code for the accelerator is provided in the following repo: <http://aka.ms/pg-byoac-repo/>.
+This solution accelerator is designed as an end-to-end example of a Financial Services Industry AI-enabled application. It demonstrates the implementation of generative AI capabilities to enhance an existing application with AI-driven data validation, vector search, semantic ranking, and GraphRAG on Azure Database for PostgreSQL, and illustrates how they can be combined to deliver high quality responses to financial questions via an intelligent copilot. The app uses a small sample dataset made up of statements of work (SOWs) and invoices. The source code for the accelerator is provided in the following repo: <https://aka.ms/pg-byoac-repo/>.
 
 The application has the following architecture:
 

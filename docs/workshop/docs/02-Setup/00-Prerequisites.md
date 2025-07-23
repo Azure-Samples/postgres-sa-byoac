@@ -66,7 +66,7 @@ To get the most of of this solution accelerator, you should have:
 
 After completing this workshop, you will have:
 
-1. A personal fork (copy) of the [Build Your Own Advanced AI Copilot with PostgreSQL](http://aka.ms/pg-byoac-repo/) repository in your GitHub profile. This repo contains all the materials you need to reproduce the workshop later.
+1. A personal fork (copy) of the [Build Your Own Advanced AI Copilot with PostgreSQL](https://aka.ms/pg-byoac-repo/) repository in your GitHub profile. This repo contains all the materials you need to reproduce the workshop later.
 
 2. Hands-on understanding of the [Azure AI Foundry](https://ai.azure.com) portal and relevant developer tools (e.g., Azure Developer CLI, Prompty, FastAPI) to streamline end-to-end development workflows for your own AI apps.
 
