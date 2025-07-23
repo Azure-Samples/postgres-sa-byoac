@@ -4,7 +4,7 @@
 
 In the financial services industry, validating contract-related documents such as Statements of Work (SOWs) and invoices presents unique challenges. Ensuring that invoices align with SOWs, especially for milestone-based payments and specific deliverables, can be a meticulous and error-prone process. Traditionally, this validation involves manual comparison and cross-checking, often leading to delays, errors, and increased operational costs. This accelerator offers a solution that leverages Azure Database for PostgreSQL - Flexible Server and Azure's comprehensive suite of AI services to automate and streamline this process, resulting in faster, more accurate, and cost-effective invoice validation.
 
-The accelerator is designed to demonstrate how an existing financial services application can be enhanced by integrating advanced AI capabilities into Azure Database for PostgreSQL through the Azure AI extension and incorporating Azure OpenAI's GPT-4 model to validate and review contract-related documents.
+The accelerator is designed to demonstrate how an existing financial services application can be enhanced by integrating advanced AI capabilities into Azure Database for PostgreSQL through the Azure AI extension and incorporating Azure OpenAI's GPT-4o model to validate and review contract-related documents.
 
 ??? question "Using your own data?"
 
