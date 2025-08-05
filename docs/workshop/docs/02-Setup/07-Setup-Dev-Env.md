@@ -5,7 +5,7 @@ In this step, you will configure your Python development environment in Visual S
 - [X] Created a Python virtual environment
 - [X] Installed the required Python libraries from `requirements.txt`
 - [X] Create and populated a `.env` file in the **Woodgrove API** project.
-- [X] Connected to your database using pgAdmin
+- [X] Connected to your database using the PostgreSQL extension in VS Code.
 
 ## Create a Python virtual environment
 
@@ -82,9 +82,11 @@ Configuration values, such as connection string and endpoints, that allow your a
 
 5. Save the `.env` file.
 
-## Connect to your database from pgAdmin
+## Connected to your database using the PostgreSQL extension in VS Code
 
-You will use pgAdmin from your machine to configure various features in the database and execute queries to test those features. The `azd up` deployment script added your Microsoft Entra ID user as the owner of the database, so you will authenticate with Entra ID to. Please follow the steps below to connect to your Azure Database for PostgreSQL - Flexible Server using pgAdmin:
+TODO: Change these steps to be how to connect from VS Code. Include screen shots...
+
+You will use the PostgreSQL extension in VS Code to configure various features in the database and execute queries to test those features. The `azd up` deployment script added your Microsoft Entra ID user as the owner of the database, so you will authenticate with Entra ID. Please follow the steps below to connect to your Azure Database for PostgreSQL - Flexible Server using the PostgreSQL extension in VS Code:
 
 1. Navigate to your Azure Database for PostgreSQL - Flexible Server resource in the [Azure portal](https://portal.azure.com/).
 
@@ -147,4 +149,4 @@ You will use pgAdmin from your machine to configure various features in the data
 
             If your access token expires during the course of the workshop, you will need to come back and repeat the above steps to reauthenticate.
 
-!!! tip "Leave pgAdmin open as you will be using it throughout the remainder of the workshop."
+!!! tip "Leave VS Code open as you will be using it throughout the remainder of the workshop."

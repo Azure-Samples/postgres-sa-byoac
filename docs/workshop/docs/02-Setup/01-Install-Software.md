@@ -1,14 +1,11 @@
 # 2.1 Development Environment Setup Options
 
 There are two main options for setting up your development environment, using a `Dev Container` or a `Local Development Environment`.  It is recommended to use a `Dev Container`.
-`Dev Containers` are useful tools as they help minimize setup and configuration issues that may occur (sometimes known as the "it works on my machine" problem).
-There are a lot of prerequisite installation requirements for this solution accelerator, if you use the Dev Container option, many of these prerequisites are installed automatically
-inside the container without variability or risk of configuration drift.
 
-Alternatively, if you prefer to work locally without a dev container, you can install and configure each prerequisites yourself on your operating system.  The following sections walk you through
+`Dev Containers` are useful tools as they help minimize setup and configuration issues that may occur (sometimes known as the "it works on my machine" problem). There are a lot of prerequisite installation requirements for this solution accelerator, if you use the Dev Container option, many of these prerequisites are installed automatically inside the container without variability or risk of configuration drift. For more background on dev containers, read the [documentation](https://code.visualstudio.com/docs/devcontainers/containers).
+
+Alternatively, if you prefer to work locally without a dev container, you can install and configure each prerequisites yourself on your operating system. The following sections walk you through
 how to do either option.
-
-For more background on dev containers, read the [documentation](https://code.visualstudio.com/docs/devcontainers/containers).
 
 ## Option 1 (Recommended) - Setup Using Dev Container
 
@@ -16,16 +13,13 @@ Using a `Dev Container` will minimize the amount of software you need to install
 
 ![Dev Containers.](https://code.visualstudio.com/assets/docs/devcontainers/containers/architecture-containers.png)
 
-### Install Software
-
 The required development environment uses a Visual Studio (VS) Code editor with a Python runtime. To complete this lab on your own computer, you must install the following required software. On completing this step, you should have installed:
 
 - [X] Windows Terminal (Only if using Windows)
 - [X] WSL 2 and Ubuntu (Only if using Windows)
 - [X] Git
 - [X] Docker desktop
-- [X] Visual Studio Code
-- [X] pgAdmin
+- [X] Visual Studio Code (and extensions)
 
 ### Install Windows Terminal (Only if using Windows)
 
@@ -35,8 +29,7 @@ Much nicer than the old cmd.exe or bare PowerShell.
 
 ### Install WSL 2 and Ubuntu (Only if using Windows)
 
-Windows Subsystem for Linux (WSL) is a powerful tool that allows the ability to run Linux based Docker images on the Windows operating system.  Plus, WSL 2 provides advantages to using 
-Docker Desktop on Windows, such as better memory management for large containers.  WSL 2 is needed because the dev container for this solution accelerator is built on an Ubuntu Linux base image.
+Windows Subsystem for Linux (WSL) is a powerful tool that allows the ability to run Linux based Docker images on the Windows operating system.  Plus, WSL 2 provides advantages to using Docker Desktop on Windows, such as better memory management for large containers.  WSL 2 is needed because the dev container for this solution accelerator is built on an Ubuntu Linux base image.
 
 1. First we need to install Ubuntu from the Microsoft App Store:
 
@@ -93,30 +86,49 @@ Docker Desktop is an application that allows you to build, share, and run contai
     - Select `Ubuntu`
     - Click `Apply & restart`
 
-### Install Visual Studio Code
+### Install Visual Studio Code (and extensions)
 
 Visual Studio Code is a versatile, open-source code editor that combines powerful features with an intuitive interface to help you efficiently write, debug, and customize projects. Note that
 the needed extensions will automatically be installed within the `dev container`, so no need to install any additional extensions now.
 
 1. Download and install from <https://code.visualstudio.com/download>.
 
-    - Use the default options in the installer.    
+    - Use the default options in the installer.
 
 2. After installation completed, launch Visual Studio Code.
 
 3. In the **Extensions** menu, search for and install the following extensions from Microsoft:
 
     - [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+    - [PostgreSQL](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
 
 4. Close VS Code.
 
-### Install pgAdmin
+### Install PostgreSQL Command Line Tools (psql)
 
-Throughout this workshop, you will use pgAdmin to run queries against your PostgreSQL database. pgAdmin is the leading Open Source management tool for Postgres.
+Throughout this workshop, you will use the [PostgreSQL](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) extension for VS Code to run queries against your PostgreSQL database. The extension provides the ability to connect to your database with PSQL, but this requires PSQL to be installed on your machine and in the system path.
 
-1. Download pgAdmin from <https://www.pgadmin.org/download/>.
+!!! tip "PostgreSQL for Visual Studio Code"
 
-2. Run the installer using the default options.
+    The PostgreSQL extension for VS Code is a feature-rich tool designed to simplify PostgreSQL database management and development. This extension empowers developers to connect to PostgreSQL databases, write and execute queries, and manage database objects without leaving the Visual Studio Code environment. This extension revolutionizes the PostgreSQL development workflow by introducing comprehensive functionality, intuitive UI design, and seamless integration with cloud platforms such as Azure Database for PostgreSQL.
+
+1. Download the latest version of PostgreSQL from <https://www.enterprisedb.com/downloads/postgres-postgresql-downloads>.
+
+2. Launch the PostgreSQL installer.
+
+3. On the **Installation Directory** screen of the installer, note the installation directory, as this will need to be added to your system path after the install.
+
+    ![Screenshot of the PostgreSQL installer Installation Directory screen.](../img/postgresql-installer-installation-directory.png)
+
+4. On the **Select Components** screen, uncheck everything but **Command Line Tools**.
+
+    ![Screenshot of the PostgreSQL installer Select Components screen.](../img/postgresql-installer-select-components.png)
+
+5. Select **Next** through the remain sceens and finish the installation.
+
+6. Add the `psql` directory to your system path.
+
+    This will be the **Installation directory** you noted above, plus `\bin`. For example, on Windows, the `psql` directory will be `C:\Program Files\PostgreSQL\17\bin`.
 
 ## Option 2 - Setup Local Development Environment
 
@@ -186,7 +198,7 @@ Much nicer than the old cmd.exe or bare PowerShell.
 
     !!! info "Upgrade to latest version of Azure Developer CLI"
 
-        If you already have the Azure Developer CLI installed, you'll need to be sure to upgrade to the latest version. This guide required v1.12 or greater.
+        If you already have the Azure Developer CLI installed, you'll need to be sure to upgrade to the latest version. This guide requires v1.12 or greater.
 
 5. Execute the following command from a terminal prompt to verify the tools were installed:
 
@@ -274,13 +286,32 @@ Visual Studio Code is a versatile, open-source code editor that combines powerfu
 3. In the **Extensions** menu, search for and install the following extensions from Microsoft:
 
     - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+    - [PostgreSQL](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
 
 4. Close VS Code.
 
-### Install pgAdmin
+### Install PostgreSQL Command Line Tools (psql)
 
-Throughout this workshop, you will use pgAdmin to run queries against your PostgreSQL database. pgAdmin is the leading Open Source management tool for Postgres.
+Throughout this workshop, you will use the [PostgreSQL](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) extension for VS Code to run queries against your PostgreSQL database. The extension provides the ability to connect to your database with PSQL, but this requires PSQL to be installed on your machine and in the system path.
 
-1. Download pgAdmin from <https://www.pgadmin.org/download/>.
+!!! tip "PostgreSQL for Visual Studio Code"
 
-2. Run the installer using the default options.
+    The PostgreSQL extension for VS Code is a feature-rich tool designed to simplify PostgreSQL database management and development. This extension empowers developers to connect to PostgreSQL databases, write and execute queries, and manage database objects without leaving the Visual Studio Code environment. This extension revolutionizes the PostgreSQL development workflow by introducing comprehensive functionality, intuitive UI design, and seamless integration with cloud platforms such as Azure Database for PostgreSQL.
+
+1. Download the latest version of PostgreSQL from <https://www.enterprisedb.com/downloads/postgres-postgresql-downloads>.
+
+2. Launch the PostgreSQL installer.
+
+3. On the **Installation Directory** screen of the installer, note the installation directory, as this will need to be added to your system path after the install.
+
+    ![Screenshot of the PostgreSQL installer Installation Directory screen.](../img/postgresql-installer-installation-directory.png)
+
+4. On the **Select Components** screen, uncheck everything but **Command Line Tools**.
+
+    ![Screenshot of the PostgreSQL installer Select Components screen.](../img/postgresql-installer-select-components.png)
+
+5. Select **Next** through the remain sceens and finish the installation.
+
+6. Add the `psql` directory to your system path.
+
+    This will be the **Installation directory** you noted above, plus `\bin`. For example, on Windows, the `psql` directory will be `C:\Program Files\PostgreSQL\17\bin`.
