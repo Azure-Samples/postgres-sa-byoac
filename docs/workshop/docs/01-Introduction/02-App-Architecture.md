@@ -50,9 +50,9 @@ _Select each tab below to learn more about how the movement of data in the conte
 
           1. Generate and save vector embeddings of document chunks using Azure OpenAI's `text-embedding-ada-002` model.
 
-          2. Create extractive summaries of SOWs using the Azure AI Language service.
+          2. Create abstractive summaries of SOWs using the Azure AI Language service.
 
-    7. Document data is then sent through an AI-driven data validation process on the API that uses Azure OpenAI to analyze the data extracted by Document Intelligence, ensuring it conforms to expected standards and is accurate based on related data already in the system.
+    7. Document data is then sent through an AI-driven data validation process on the API that uses Azure OpenAI in Azure AI Foundry to analyze the data extracted by Document Intelligence, ensuring it conforms to expected standards and is accurate based on related data already in the system.
         
            1. Azure OpenAI's GPT-4o language model reviews all document data, employing natural language understanding to validate and cross-check information and ensure high data integrity.
            
@@ -80,9 +80,9 @@ _Select each tab below to learn more about how the movement of data in the conte
 
           2. By integrating these two methods, hybrid search enhances the precision and comprehensiveness of search results, making it ideal for applications like semantic search, recommendation systems, and content discovery.
 
-    5. (Optional) Semantic Ranking via model inference from the `azure_ai` extension ranks search result relevance and is returned into the RAG context as part of the composite prompt.
+    5. Semantic Ranking via model inference from the `azure_ai` extension's `rank` semantic operator reranks search results based on relevance and is returned into the RAG context as part of the composite prompt.
 
-    6. Azure OpenAI uses the composite prompt to formulates a response.
+    6. Azure OpenAI in Azure AI Foundry uses the composite prompt to formulates a response.
 
           1. The composite prompt contains the system prompt augmented with context provided by the results of the hybrid search against the PostgreSQL database.
 
