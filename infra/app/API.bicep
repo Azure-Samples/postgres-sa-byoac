@@ -15,7 +15,8 @@ param exists bool
 param appDefinition object
 param envSettings array = []
 param secretSettings array = []
-param openAIServiceName string
+param aiFoundryAccountName string
+param aiFoundryProjectName string
 
 var appSettingsArray = filter(array(appDefinition.settings), i => i.name != '')
 var secrets = union(map(filter(appSettingsArray, i => i.?secret != null), i => {
@@ -50,15 +51,19 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' existing 
   name: storageAccountName
 }
 
-resource openAIService 'Microsoft.CognitiveServices/accounts@2023-05-01' existing = {
-  name: openAIServiceName
+resource aiFoundryAccount 'Microsoft.CognitiveServices/accounts@2025-06-01' existing = {
+  name: aiFoundryAccountName
+}
+
+resource project 'Microsoft.MachineLearningServices/workspaces@2025-07-01-preview' existing = {
+  name: aiFoundryProjectName
 }
 
 resource docIntelligence 'Microsoft.CognitiveServices/accounts@2024-06-01-preview' existing = {
   name: documentIntelligenceName
 }
 
-resource roleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = {
+resource roleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
   scope: docIntelligence
   name: guid(resourceGroup().id, identity.id, 'Cognitive Services User')
   properties: {
@@ -68,9 +73,29 @@ resource roleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-prev
   }
 }
 
-resource apiAppRoleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = {
-  scope: openAIService
-  name: guid(subscription().id, resourceGroup().id, identity.id, 'Cognitive Services OpenAI User')
+resource apiAiDeveloperFoundryRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+  scope: aiFoundryAccount
+  name: guid(aiFoundryAccount.id, identity.id, 'Azure AI Developer')
+  properties: {
+    roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '64702f94-c441-49e6-a78b-ef80e0188fee') // Azure AI Developer role ID
+    principalId: identity.properties.principalId
+    principalType: 'ServicePrincipal'
+  }
+}
+
+resource apiAiDeveloperProjectRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+  scope: project
+  name: guid(project.id, identity.id, 'Azure AI Developer')
+  properties: {
+    roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '64702f94-c441-49e6-a78b-ef80e0188fee') // Azure AI Developer role ID
+    principalId: identity.properties.principalId
+    principalType: 'ServicePrincipal'
+  }
+}
+
+resource apiOpenAiUserFoundryRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+  scope: aiFoundryAccount
+  name: guid(aiFoundryAccount.id, identity.id, 'Cognitive Services OpenAI User')
   properties: {
     roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '5e0bd9bd-7b93-4f28-af87-19fc36ad61bd') // Cognitive Services OpenAI User role ID
     principalId: identity.properties.principalId
@@ -78,11 +103,11 @@ resource apiAppRoleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-0
   }
 }
 
-resource apiAppOpenAIContributorRoleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = {
-  scope: openAIService
-  name: guid(subscription().id, resourceGroup().id, identity.id, 'Cognitive Services OpenAI Contributor')
+resource apiOpenAiUserProjectRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+  scope: project
+  name: guid(project.id, identity.id, 'Cognitive Services OpenAI User')
   properties: {
-    roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'a001fd3d-188f-4b5d-821b-7da978bf7442') // Cognitive Services OpenAI Contributor role ID
+    roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '5e0bd9bd-7b93-4f28-af87-19fc36ad61bd') // Cognitive Services OpenAI User role ID
     principalId: identity.properties.principalId
     principalType: 'ServicePrincipal'
   }
@@ -92,10 +117,9 @@ resource acrPullRole 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
   scope: containerRegistry
   name: guid(subscription().id, resourceGroup().id, identity.id, 'acrPullRole')
   properties: {
-    roleDefinitionId:  subscriptionResourceId(
-      'Microsoft.Authorization/roleDefinitions', '7f951dda-4ed3-4680-a7ca-43fe172d538d') // ACR Pull role
-    principalType: 'ServicePrincipal'
+    roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '7f951dda-4ed3-4680-a7ca-43fe172d538d') // ACR Pull role
     principalId: identity.properties.principalId
+    principalType: 'ServicePrincipal'
   }
 }
 

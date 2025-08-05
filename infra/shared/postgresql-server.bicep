@@ -1,8 +1,11 @@
-@description('The location of the PostgreSQL server.')
-param location string
-
+// *****************************************************************************
+// Bicep module to create an Azure Database for PostgreSQL - Flexible Server.
+// *****************************************************************************
 @description('The name of the PostgreSQL server.')
 param serverName string
+
+@description('The location of the PostgreSQL server.')
+param location string
 
 @description('The SKU name for the PostgreSQL server.')
 param skuName string = 'Standard_D2ds_v4'
@@ -42,6 +45,9 @@ param dnsZoneName string = serverName
 @description('Fully Qualified DNS Private Zone')
 param dnsZoneFqdn string = '${dnsZoneName}.postgres.database.azure.com'
 
+@description('The name of the storage account to assign an access policy.')
+param storageAccountName string
+
 @description('High Availability Mode')
 @allowed([
   'ZoneRedundant'
@@ -49,20 +55,26 @@ param dnsZoneFqdn string = '${dnsZoneName}.postgres.database.azure.com'
 ])
 param highAvailabilityMode string = 'Disabled'
 
-
 var connectSubnet = !empty(subnetId)
 
-resource dnszone 'Microsoft.Network/privateDnsZones@2020-06-01' = if (connectSubnet) {
+@description('Gets a reference to the shared Azure Storage account.')
+resource storage 'Microsoft.Storage/storageAccounts@2023-01-01' existing = if (!empty(storageAccountName)) {
+  name: storageAccountName
+}
+
+resource dnsZone 'Microsoft.Network/privateDnsZones@2020-06-01' = if (connectSubnet) {
   name: dnsZoneFqdn
   location: 'global'
 }
 
-resource postgresqlServer 'Microsoft.DBforPostgreSQL/flexibleServers@2024-11-01-preview' = {
+@description('Creates a PostgreSQL Flexible Server.')
+resource postgreSqlServer 'Microsoft.DBforPostgreSQL/flexibleServers@2025-01-01-preview' = {
   name: serverName
+  location: location
+  tags: tags
   identity: {
     type: 'SystemAssigned'
   }
-  location: location
   sku: {
     name: skuName
     tier: skuTier
@@ -87,17 +99,17 @@ resource postgresqlServer 'Microsoft.DBforPostgreSQL/flexibleServers@2024-11-01-
     }
     network: connectSubnet ?{
       delegatedSubnetResourceId: subnetId
-      privateDnsZoneArmResourceId: dnszone.id
+      privateDnsZoneArmResourceId: dnsZone.id
       publicNetworkAccess: 'Enabled'
     } : {
       publicNetworkAccess: 'Enabled'
     }
   }
-  tags: tags
 }
 
-resource firewallRuleAllowAzureIPs 'Microsoft.DBforPostgreSQL/flexibleServers/firewallRules@2024-11-01-preview' = {
-  parent: postgresqlServer
+@description('Creates a firewall rule to allow access from all Azure services and IP addresses.')
+resource firewallRuleAllowAzureIPs 'Microsoft.DBforPostgreSQL/flexibleServers/firewallRules@2025-01-01-preview' = {
+  parent: postgreSqlServer
   name: 'AllowAllAzureServicesAndResourcesWithinAzureIps'
   properties: {
     startIpAddress: '0.0.0.0'
@@ -113,9 +125,21 @@ resource appConfigPostgresqlServerName 'Microsoft.AppConfiguration/configuration
   parent: appConfig
   name: 'postgresql-server'
   properties: {
-    value: postgresqlServer.properties.fullyQualifiedDomainName
+    value: postgreSqlServer.properties.fullyQualifiedDomainName
   }
 }
 
-output serverName string = postgresqlServer.name
-output fqdn string = postgresqlServer.properties.fullyQualifiedDomainName
+@description('Assigns the Storage Blob Data Contributor role to the PostgreSQL server identity to provide access to blobs in the storage account.')
+resource storageBlobDataContributorRole 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+  scope: storage
+  name: guid(storage.id, postgreSqlServer.id, 'StorageBlobDataContributorRole')
+  properties: {
+    roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'ba92f5b4-2d11-453d-a403-e96b0029c9fe') // Storage Blob Data Contributor role
+    principalId: postgreSqlServer.identity.principalId
+    principalType: 'ServicePrincipal'
+  }
+}
+
+output name string = postgreSqlServer.name
+output fqdn string = postgreSqlServer.properties.fullyQualifiedDomainName
+output principalId string = postgreSqlServer.identity.principalId

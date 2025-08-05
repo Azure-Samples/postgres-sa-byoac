@@ -1,3 +1,7 @@
+// *****************************************************************************
+// Bicep module to create an Azure Storage account.
+// *****************************************************************************
+
 param containers array = []
 param files array = []
 param appConfigName string
@@ -6,11 +10,6 @@ param name string
 param tags object = {}
 param principalId string
 param principalType string = 'User'
-param postgresqlServerName string
-
-resource postgresqlServer 'Microsoft.DBforPostgreSQL/flexibleServers@2024-11-01-preview' existing = {
-  name: postgresqlServerName
-}
 
 resource storage 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   name: name
@@ -62,11 +61,11 @@ resource blobFiles 'Microsoft.Resources/deploymentScripts@2020-10-01' = [
   }
 ]
 
-resource appConfig 'Microsoft.AppConfiguration/configurationStores@2024-05-01' existing = if (!empty(appConfigName)) {
+resource appConfig 'Microsoft.AppConfiguration/configurationStores@2025-02-01-preview' existing = if (!empty(appConfigName)) {
   name: appConfigName
 }
 
-resource appConfigStorageAccountName 'Microsoft.AppConfiguration/configurationStores/keyValues@2024-05-01' = if (!empty(appConfigName)) {
+resource appConfigStorageAccountName 'Microsoft.AppConfiguration/configurationStores/keyValues@2025-02-01-preview' = if (!empty(appConfigName)) {
   parent: appConfig
   name: 'storage-account'
   properties: {
@@ -76,21 +75,11 @@ resource appConfigStorageAccountName 'Microsoft.AppConfiguration/configurationSt
 
 resource storageBlobDataContributorRole 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
   scope: storage
-  name: guid(subscription().id, resourceGroup().id, principalId, 'sharedStorageBlobDataContributorRole')
+  name: guid(storage.id, principalId, 'StorageBlobDataContributorRole')
   properties: {
     roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'ba92f5b4-2d11-453d-a403-e96b0029c9fe') // Storage Blob Data Contributor role
     principalId: principalId
     principalType: principalType
-  }
-}
-
-resource postgresStorageBlobDataContributorRole 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
-  scope: storage
-  name: guid(subscription().id, resourceGroup().id, postgresqlServer.id, 'sharedStorageBlobDataContributorRole')
-  properties: {
-    roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'ba92f5b4-2d11-453d-a403-e96b0029c9fe') // Storage Blob Data Contributor role
-    principalId: postgresqlServer.identity.principalId
-    principalType: 'ServicePrincipal'
   }
 }
 
