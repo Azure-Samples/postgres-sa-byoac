@@ -1,6 +1,6 @@
 # 2.2 リポジトリをフォークする
 
-[PostgreSQL Solution Accelerator: Build your own AI Copilot](http://aka.ms/pg-byoac-repo/) GitHub リポジトリのコピー（フォークと呼ばれる）を作成し、それをローカルコンピュータにクローンして、その内容を操作できるようにします。このステップを完了すると、次のことができるようになります。
+[PostgreSQL Solution Accelerator: Build your own AI Copilot](https://aka.ms/pg-byoac-repo/) GitHub リポジトリのコピー（フォークと呼ばれる）を作成し、それをローカルコンピュータにクローンして、その内容を操作できるようにします。このステップを完了すると、次のことができるようになります。
 
 - [X] **PostgreSQL Solution Accelerator: Build your own AI Copilot** リポジトリを個人の GitHub プロフィールにフォークした
 - [X] リポジトリのローカルクローンを作成した
@@ -10,7 +10,7 @@
 
 GitHub でのフォークとは、公開リポジトリの個人用コピーを作成することを指し、元のプロジェクトに影響を与えることなく自由に変更を試すことができます。
 
-1. リポジトリをフォークするには、新しいブラウザウィンドウまたはタブを開き、<http://aka.ms/pg-byoac-repo/> に移動します。
+1. リポジトリをフォークするには、新しいブラウザウィンドウまたはタブを開き、<https://aka.ms/pg-byoac-repo/> に移動します。
 
 2. **Fork** ボタンを選択して、リポジトリのコピーを GitHub プロフィールに作成します。
 

@@ -56,7 +56,7 @@
 | `mle-<unique_string>`       | Machine learning online endpoint |
 | `mlw-<unique_string>`       | Azure Machine Learning workspace |
 | `openai-<unique_string>`    | Azure OpenAI                     |
-| `psql-data<unique_string>`  | Azure Database for PostgreSQL flexible server |
+| `psql-<unique_string>`  | Azure Database for PostgreSQL flexible server |
 | `st<unique_string>`         | Storage Account                  |
 
 上記のリソース名にある `<unique_string>` トークンは、リソースの命名時に Bicep スクリプトによって生成されるユニークな文字列を表しています。これにより、リソースがユニークに命名され、リソース命名の衝突を避けることができます。

@@ -66,8 +66,8 @@ Azure OpenAIモデルの両方をサポートし、両モデルに対して少�
 
 このワークショップを完了すると、以下のものを得ることができます:
 
-1. GitHubプロフィールに[Build Your Own Advanced AI Copilot with PostgreSQL](http://aka.ms/pg-byoac-repo/)リポジトリの個人用フォーク（コピー）。このリポジトリには、後でワークショップを再現するために必要なすべての資料が含まれています。
+1. GitHubプロフィールに[Build Your Own Advanced AI Copilot with PostgreSQL](https://aka.ms/pg-byoac-repo/)リポジトリの個人用フォーク（コピー）。このリポジトリには、後でワークショップを再現するために必要なすべての資料が含まれています。
 
-2. [Azure AI Foundry](https://ai.azure.com)ポータルと関連する開発者ツール（例: Azure Developer CLI、Prompty、FastAPI）を使用して、独自のAIアプリのエンドツーエンド開発ワークフローを効率化するための実践的な理解。
+2. [Azure AI Foundry](https://ai.azure.com)ポータルと関連する開発者ツール（例: Azure Developer CLI、FastAPI）を使用して、独自のAIアプリのエンドツーエンド開発ワークフローを効率化するための実践的な理解。
 
 3. Azure AIサービスをアプリケーションに統合して、強力なAI対応アプリケーションを作成する方法の理解。
