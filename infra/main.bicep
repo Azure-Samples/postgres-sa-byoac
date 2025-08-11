@@ -30,7 +30,6 @@ param postgresqlDatabaseName string = 'contracts'
 @description('Version of the OpenAI model to deploy')
 @allowed([
   '2024-05-13'
-  '2024-08-06'
   '2024-11-20'
 ])
 param openAiModelVersion string
@@ -71,10 +70,8 @@ param userPortalExists bool
 @secure()
 param portalDefinition object
 
-/*
 @description('The model ID for the rerank model.')
 param rerankModelId string = 'azureml://registries/azureml-cohere/models/Cohere-rerank-v3.5'
-*/
 
 // Variables
 var abbrs = loadJsonContent('./abbreviations.json')
@@ -419,6 +416,9 @@ output SERVICE_API_IDENTITY_PRINCIPAL_NAME string = apiApp.outputs.identityPrinc
 output SERVICE_USERPORTAL_ENDPOINT_URL string = userPortalApp.outputs.uri
 output SERVICE_API_ENDPOINT_URL string = apiApp.outputs.uri
 
+output AI_FOUNDRY_LOCATION string = aiFoundryLocation
+output RERANK_MODEL_ID string = rerankModelId
+output RERANK_MODEL_WORKSPACE_NAME string = project.outputs.name
 //output RERANK_INFERENCE_ENDPOINT string = rerankModelEndpoint.outputs.inferenceEndpoint
 
 output RUN_POSTDEPLOY_SCRIPT bool = runPostDeployScript
