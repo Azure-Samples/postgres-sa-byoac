@@ -39,7 +39,7 @@ Before running the `azd up` command, you must authenticate your VS Code environm
 
 1. Log into the Azure CLI `az` using the command below.
 
-    ```bash  title=""
+    ```bash  title="" linenums="0"
     az login
     ```
 
@@ -51,7 +51,7 @@ Before running the `azd up` command, you must authenticate your VS Code environm
 
 1. Log in to Azure Developer CLI. This is only required once per-install.
 
-    ```bash title=""
+    ```bash title="" linenums="0"
     azd auth login
     ```
 
@@ -61,25 +61,21 @@ You are now ready to provision your Azure resources and deploy the Woodgrove Ban
 
 1. Use `azd up` to provision your Azure infrastructure and deploy the web application to Azure.
 
-    ```bash title=""
+    ```bash title="" linenums="0"
     azd up
     ```
 
     !!! info "You will be prompted for several inputs for the `azd up` command:"
 
         - **Enter a new environment name**: Enter a value, such as `dev`.
-        - The environment for the `azd up` command ensures configuration files, environment variables, and resources are provisioned and deployed correctly.
-        - Should you need to delete the `azd` environment, locate and delete the `.azure` folder at the root of the project in the VS Code Explorer.
+            - The environment for the `azd up` command ensures configuration files, environment variables, and resources are provisioned and deployed correctly.
+            - Should you need to delete the `azd` environment, locate and delete the `.azure` folder at the root of the project in the VS Code Explorer.
         - **Select an Azure Subscription to use**: Select the Azure subscription you are using for this workshop using the up and down arrow keys.
         - **Select an Azure location to use**: Select the Azure region into which resources should be deployed using the up and down arrow keys.
-        - **Enter a value for the `deployAMLModel`**: Select one of the following values using the up and down arrow keys:
-            - `mini` to deploy the "MiniLM-L6-v2" Cross Encoder model (smaller, fastest, high accuracy, deploys a 4 vCPU Azure ML host)
-            - `bge` to deploy the "BGE-Reranker-v2-M3" Cross Encoder  model (larger, fast, highest accuracy, deploys a 16 vCPU Azure ML host)
-            - `none` to not deploy any Cross Encoder and skip the Semantic Re-ranker feature.
-        - **Enter a value for the `openAiModelVersion`**: Select one of the following values using the up and down arrow keys:
-            - `2024-05-13` this deploys this version of OpenAI gpt-4o.  This version works in most Azure regions.
-            - `2024-11-20` this deploys this version of OpenAI gpt-4o.  This version works in some Azure regions where 2024-05-13 does not, for example, Japan East. For the most
-            up to date information on what versions are supported in what regions, see the [Standard models by endpoint page](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-chat-completions#standard-models-by-endpoint).        
+        - **Select a location to use for Azure AI Foundry**: Select one of the available values using the up and down arrow keys.
+        - **Select a value for the `openAiModelVersion`**: Select one of the following values using the up and down arrow keys:
+            - `2024-05-13` this deploys this version of OpenAI gpt-4o. This version works in most Azure regions.
+            - `2024-11-20` this deploys this version of OpenAI gpt-4o. This version works in some Azure regions where 2024-05-13 does not, for example, Japan East. For the most up to date information on what versions are supported in what regions, see the [Standard models by endpoint page](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-chat-completions#standard-models-by-endpoint).        
         - **Enter a value for the `resourceGroupName`**: Enter `rg-postgresql-accelerator`, or a similar name.
 
 2. Wait for the process to complete. It may take roughly 15 minutes to deploy everything.
@@ -88,7 +84,7 @@ You are now ready to provision your Azure resources and deploy the Woodgrove Ban
 
         It's possible a `server is not in an accessible state` error may occur when the Azure Bicep deployment attempts to add the PostgreSQL Admin User after the PostgreSQL Server has been provisioned. This can occur if the PostgreSQL server is still being provisioned in the Azure backend, but the Deployment returned that it's successful already. If you encounter this error, simply re-run the `azd up` command.
 
-        ```
+        ```title="" linenums="0"
         ERROR: error executing step command 'provision': deployment failed: error deploying infrastructure: deploying to subscription:
 
         Deployment Error Details:

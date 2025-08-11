@@ -34,13 +34,13 @@ Forking in GitHub refers to creating a personal copy of a public repository, whi
 
 3. Once in the desired directory, run the following `git clone` command to download a copy of your fork onto your local machine. Ensure you replace the `<url_of_your_forked_repo>` token with the clone link you copied in the previous step.
 
-    ```bash title=""
+    ```bash title="" linenums="0"
     git clone <url_of_your_forked_repo>
     ```
 
 4. Once the repository has been cloned, change directories at the command prompt to the folder of the cloned repo, then run the following command to open the project in Visual Studio Code:
 
-    ```bash title=""
+    ```bash title="" linenums="0"
     code .
     ```
 

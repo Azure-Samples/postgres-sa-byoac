@@ -28,15 +28,15 @@ To be able to complete this solution accelerator, you will need:
 
     !!! tip "Azure AI Foundry region does not need to be the same as your resource group"
 
-    When running the `azd up` command, the regions for deploying Azure AI Foundry are restricted to those that currently the required AI resources for this workshop. The available regions are:
-
-    - eastus
-    - eastus2
-    - northcentralus
-    - southcentralus
-    - westus
-
-    The region you select for your AI Foundry account and the associated models and services do not need to match the region you use for other workshop resources.
+        When running the `azd up` command, you will be prompted to select a region for deploying Azure AI Foundry. Those regions are restricted to those that currently support the required AI resources for this workshop. The available regions are:
+    
+        - eastus
+        - eastus2
+        - northcentralus
+        - southcentralus
+        - westus
+    
+        The region you select for your AI Foundry account and the associated models and services do not need to match the region you use for other workshop resources.
 
     !!! danger "Choosing a region that doesn't support both Azure OpenAI models will result in deployment failure when running `azd up`."
 

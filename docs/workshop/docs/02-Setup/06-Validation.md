@@ -24,7 +24,7 @@ In this section, you will validate your setup before moving on to the next phase
 
 1. Open a new browser tab and navigate to the link below. You may be prompted to login.
 
-    ```bash title=""
+    ```bash title="" linenums="0"
     https://portal.azure.com/#browse/resourcegroups
     ```
 
@@ -44,7 +44,9 @@ In this section, you will validate your setup before moving on to the next phase
         | :-- | :-- |
         | Azure AI Foundry | `aif-<unique_string>` |
         | Azure AI Foundry project | `DefaultProject (aif-<unique_string>`)
-        | App Configuration | appcs-<unique_string>` |
+        | Azure AI hub | `hub-<unique_string>` |
+        | Azure AI project | `proj-<unique_string>` |
+        | App Configuration | `appcs-<unique_string>` |
         | Application Insights | `appi-<unique_string>` |
         | Container App | `ca-api-<unique_string>` |
         | Container App | `ca-portal-<unique_string>` |
@@ -52,10 +54,8 @@ In this section, you will validate your setup before moving on to the next phase
         | Container Registry | `cr<unique_string>` |
         | Document Intelligence | `di-<unique_string>` |
         | Event Grid System Topic | `evgt-<unique_string>` |
-        | Azure AI hub | `hub-<unique_string>` |
         | Key Vault | `kv-<unique_string>` |
         | Log Analytics workspace | `log-<unique_string>` |
-        | Azure AI project | `proj-<unique_string>` |
         | Azure Database for PostgreSQL - Flexible Server | `psql-<unique_string>` |
         | Storage account | `st<unique_string>` |
 
@@ -99,21 +99,21 @@ The `azd up` command included steps to deploy the Woodgrove Bank application int
 
 ## View Azure OpenAI model deployments in Azure AI Foundry
 
-!!! tip "The Azure AI Foundry portal lets you view and manage the Azure AI resources for your app."
+!!! tip "The Azure AI Foundry portal lets you view and manage the Azure AI models for your app."
 
 You will use the Azure AI Foundry portal to verify the `gpt-4o` and `text-embedding-ada-002` models were deployed into your Azure OpenAI service.
 
-1. In the Azure portal, return to the resource group containing your resources and select the **Azure OpenAI** resource.
+1. In the Azure portal, return to the resource group containing your resources and select the **Azure AI project** resource. The name of the resource will start with `proj-`.
 
-    ![Screenshot of the resources in the resource group, with the Azure OpenAI resource highlighted.](../img/azure-portal-rg-openai.png)
+    ![Screenshot of the resources in the resource group, with the Azure AI poroject resource highlighted.](../img/azure-portal-rg-ai-project.png)
 
-2. On the Azure OpenAI resource's **Overview** page, select **Explore Azure AI Foundry portal**.
+2. On the Azure AI project resource's **Overview** page, select **Launch studio** under the **Start building in Azure AI Foundry** heading.
 
-    ![Screenshot of the Azure OpenAI service's Overview blade, with the Explore Azure AI Foundry portal highlighted with a red box.](../img/azure-portal-openai-overview.png)
+    ![Screenshot of the Azure AI project's Overview blade, with the Launch Studio button highlighted with a red box.](../img/azure-portal-ai-project-overview.png)
 
-3. In **Azure AI Foundry**, select the **Deployments** menu item under **Shared resources** in the left-hand navigation menu.
+3. In **Azure AI Foundry**, select the **Models + endpoints** item under **My assets** in the left-hand navigation menu.
 
-    ![Screenshot of Azure AI Foundry, with the Deployments menu item highlighted and selected. The completions and embeddings model deployments are displayed.](../img/azure-ai-foundry-deployments.png)
+    ![Screenshot of Azure AI Foundry, with the Models + endpoints menu item highlighted and selected. The completions and embeddings model deployments are displayed.](../img/azure-ai-foundry-deployments.png)
 
 4. Verify you see a `completions` deployment for the `gpt-4o` model and an `embeddings` deployment for the `text-embedding-ada-002` model.
 

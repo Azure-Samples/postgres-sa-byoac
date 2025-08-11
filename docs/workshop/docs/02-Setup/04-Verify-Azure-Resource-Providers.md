@@ -14,7 +14,7 @@ Follow these steps to check if the Resource Providers are registered, and if not
 
 1. Run the following command to check whether the Resource Providers are registered on your Azure Subscription:
 
-    ```azurecli
+    ```azurecli title="" linenums="0"
     az provider list --query "[?namespace == 'Microsoft.ApiManagement' || namespace=='Microsoft.AlertsManagement' || namespace=='Microsoft.Cdn' || namespace == 'Microsoft.MachineLearningServices' || namespace=='Microsoft.PolicyInsights'].{Namespace: namespace, RegistrationState: registrationState}" -o table
     ```
 
@@ -22,7 +22,7 @@ Follow these steps to check if the Resource Providers are registered, and if not
 
     The console output will look similar to the following:
 
-    ```text
+    ```text title="" linenums="0"
     Namespace                          RegistrationState    
     ---------------------------------  -------------------  
     Microsoft.MachineLearningServices  NotRegistered
@@ -36,7 +36,7 @@ Follow these steps to check if the Resource Providers are registered, and if not
 
 2. To register all the Resource Providers on the Azure Subscription, run the following commands:
 
-    ```azurecli
+    ```azurecli title="" linenums="0"
     az provider register --namespace Microsoft.AlertsManagement    
     az provider register --namespace Microsoft.ApiManagement
     az provider register --namespace Microsoft.Cdn
