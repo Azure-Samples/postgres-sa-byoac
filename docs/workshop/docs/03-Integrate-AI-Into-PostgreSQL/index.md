@@ -47,7 +47,7 @@ In addition, the `pg_diskann` extension enables DiskANN support for efficient ve
 In this section, you will use extensions to enhance your PostgreSQL database with Generative AI and Vector Search capabilities. Here's what you will accomplish:
 
 - [ ] Install the `azure_ai`, `pg_diskann`, and `vector` extensions on your PostgreSQL database
-- [ ] Configure the `azure_ai` extension with the connection details for your Azure AI services
+- [ ] Configure the `azure_ai` extension with the connection details for your Azure AI Foundry services
 - [ ] Add vector columns to database tables to allow embeddings to be stored alongside text data
 - [ ] Improve vector query performance with DiskANN
 - [ ] Generate and store embeddings for existing data
