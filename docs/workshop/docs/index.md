@@ -1,6 +1,6 @@
 # Before You Begin
 
-This guide serves as both a solution accelerator and a learning tool for developers who want to build AI-powered solutions built on top of Azure Database for PostgreSQL and Azure AI Services. The **Woodgrove Bank** solution is an actively updated project that will reflect the latest features and best practices for development of AI-enabled applications and RAG-based copilots on the Azure AI platform.
+This guide serves as both a solution accelerator and a learning tool for developers who want to build AI-powered solutions built on top of Azure Database for PostgreSQL and Azure AI Foundry. The **Woodgrove Bank** solution is an actively updated project that will reflect the latest features and best practices for development of AI-enabled applications and RAG-based copilots on the Azure AI platform.
 
 To complete this guide, you will need the following:
 
