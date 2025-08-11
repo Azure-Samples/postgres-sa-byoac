@@ -15,7 +15,7 @@ Virtual environments in Python are essential for maintaining a clean and organiz
 
 2. In Visual Studio Code, open a new terminal window and change directories to the `src/api` folder of the repo, and create a virtual environment named `.venv` by running the following command at the terminal prompt:
 
-    ```bash title=""
+    ```bash title="" linenums="0"
     cd src/api
     python -m venv .venv 
     ```
@@ -48,7 +48,7 @@ The `requirements.txt` file in the `src\api` folder contains the set of Python l
 
 1. From the integrated terminal window in VS Code, run the following command to install the required libraries in your virtual environment:
 
-    ```bash title=""
+    ```bash title="" linenums="0"
     pip install -r requirements.txt
     ```
 
@@ -64,7 +64,7 @@ Configuration values, such as connection string and endpoints, that allow your a
 
 4. In the `.env` file, add the following as the first line, replacing the `{YOUR_APP_CONFIG_ENDPOINT}` with the endpoint for the App Configuration resource in your deployed resource group.
 
-    ```ini title=""
+    ```ini title="" linenums="0"
     AZURE_APP_CONFIG_ENDPOINT={YOUR_APP_CONFIG_ENDPOINT}
     ```
 
@@ -82,71 +82,24 @@ Configuration values, such as connection string and endpoints, that allow your a
 
 5. Save the `.env` file.
 
-## Connected to your database using the PostgreSQL extension in VS Code
+## Connect to your database
 
-TODO: Change these steps to be how to connect from VS Code. Include screen shots...
+You will use the [PostgreSQL extension in VS Code](https://learn.microsoft.com/azure/postgresql/extensions/vs-code-extension/overview) to connect to your database, configure various features in the database, and execute queries to test those features. The `azd up` deployment script added your Microsoft Entra ID user as the owner of the database, so you will authenticate with Entra ID. Please follow the steps below to connect to your Azure Database for PostgreSQL - Flexible Server using the PostgreSQL extension in VS Code:
 
-You will use the PostgreSQL extension in VS Code to configure various features in the database and execute queries to test those features. The `azd up` deployment script added your Microsoft Entra ID user as the owner of the database, so you will authenticate with Entra ID. Please follow the steps below to connect to your Azure Database for PostgreSQL - Flexible Server using the PostgreSQL extension in VS Code:
+1. In Visual Studio Code, open the **PostgreSQL** extension by selecting the PostgreSQL (elephant) icon in the Activity Bar or by using the `View: Show PostgreSQL` command.
 
-1. Navigate to your Azure Database for PostgreSQL - Flexible Server resource in the [Azure portal](https://portal.azure.com/).
+2. Select **Add Connection** in the PostgreSQL panel.
 
-2. On the Azure Database for PostgreSQL - Flexible Server page, copy the **Server name** value from the **Essentials** panel on the **Overview** page by selecting the _Copy to clipboard_ button to the right of the value.
+3. Select the **Browse Azure** tab in the **Connect to PostgreSQL Server** dialog.
 
-    ![Screenshot of the Azure Database for PostgreSQL - Flexible Server Overview blade in the Azure portal, with the Server name highlighted.](../img/azure-database-for-postgresql-server-name.png)
+4. On the **Browse Azure** tab:
 
-3. On your development computer, open pgAdmin.
+   - Select your subscription, resource group, location, and PostgreSQL server. After selecting your PostgreSQL server, more options will appear.
+   - For **Database**, select the `contracts` database from the drop down list.
+   - Under **Authentication Type**, select **Entra Auth**. Choose your **Entra Account** and select **Add Entra Id**. Log into your Azure account in the browser windows the opens.
+   - Select **Test Connection** to ensure you are able to connect to the database.
+   - Select **Save & Connect**.
 
-4. In the pgAdmin **Object Explorer**, right-click on **Servers** and in the context menu select **Register >**, then **Server...**.
-
-    ![Screenshot of the pgAdmin Servers context menu, with Register > Server highlighted.](../img/pgadmin-register-server.png)
-
-5. In tab of **Register - Server** dialog, follow these steps:
-
-    1. On the **General** tab, enter "PostgreSQLSolutionAccelerator" into the **Name** field and clear the **Connect now** option.
-
-        ![Screenshot of the Register Server general tabl with the name and connect now fields highlighted.](../img/pgadmin-register-server-general-tab.png)
-
-    2. Select the **Connection** tab and provide your Azure Database for PostgreSQL flexible server instance details for **Hostname/address** and **Username**.
-
-        1. Paste the **Server name** value of your Azure Database for PostgreSQL flexible server into the **Host name/address** field.
-
-        2. The **Username** value is your Microsoft Entra ID or email.
-
-    3. Select **Save**.
-
-    4. Right-click the newly added **PostgreSQLSolutionAccelerator** server in the pgAdmin Object Explorer, and select **Connect Server** in the context menu.
-
-        ![Screenshot of the server context menu, with Connect Server highlighted.](../img/pgadmin-connect-server.png)
-
-    5. In the **Connect to Server** dialog, you will need to provide an access token.
-
-        !!! note "To Retrieve Your Microsoft Entra ID Access Token"
-
-            1. In VS Code, open a new integrated terminal.
-
-            2. At the integrated terminal prompt, execute the following command to generate and output an access token:
-
-                ```bash
-                $token = az account get-access-token --resource-type oss-rdbms --output json | ConvertFrom-Json
-                $token.accessToken
-                ```
-
-            3. Copy the output value.
-
-                !!! info "The token is a Base64 string. It encodes all the information about the authenticated user and is targeted to the Azure Database for PostgreSQL service."
-
-    6. Return to pgAdmin and the **Connect to Server** dialog and paste the access token into the password field.
-
-        ![Screenshot of the Connect to Server dialog, with the access token entered into the password box.](../img/pgadmin-connect-to-server.png)
-
-        !!! note "Do not save password!"
-
-            Ensure the **Save Password** box in the _Connect to Server_ dialog is unchecked. Checking this box can cause your login to fail.
-
-    7. Select **OK**.
-
-        !!! warning "Access token expiration"
-
-            If your access token expires during the course of the workshop, you will need to come back and repeat the above steps to reauthenticate.
+    ![The Connect to PostgreSQL Server dialog is displayed.](../img/vs-code-connect-to-postgresql-server.png)
 
 !!! tip "Leave VS Code open as you will be using it throughout the remainder of the workshop."

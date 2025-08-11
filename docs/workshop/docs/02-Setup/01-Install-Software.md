@@ -40,7 +40,7 @@ Windows Subsystem for Linux (WSL) is a powerful tool that allows the ability to 
 
 2. Open PowerShell as Admin and run:
 
-    ```powershell title=""
+    ```powershell title="" linenums="0"
     wsl --install
     ```
 
@@ -106,11 +106,11 @@ the needed extensions will automatically be installed within the `dev container`
 
 ### Install PostgreSQL Command Line Tools (psql)
 
-Throughout this workshop, you will use the [PostgreSQL](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) extension for VS Code to run queries against your PostgreSQL database. The extension provides the ability to connect to your database with PSQL, but this requires PSQL to be installed on your machine and in the system path.
+Throughout this workshop, you will use the [PostgreSQL extension for VS Code](https://learn.microsoft.com/azure/postgresql/extensions/vs-code-extension/overview) to run queries against your PostgreSQL database. The extension provides the ability to connect to your database with `psql`, but this requires `psql` to be installed on your machine and added to the system path.
 
 !!! tip "PostgreSQL for Visual Studio Code"
 
-    The PostgreSQL extension for VS Code is a feature-rich tool designed to simplify PostgreSQL database management and development. This extension empowers developers to connect to PostgreSQL databases, write and execute queries, and manage database objects without leaving the Visual Studio Code environment. This extension revolutionizes the PostgreSQL development workflow by introducing comprehensive functionality, intuitive UI design, and seamless integration with cloud platforms such as Azure Database for PostgreSQL.
+    The PostgreSQL extension for VS Code is a feature-rich tool designed to simplify PostgreSQL database management and development. It empowers developers to connect to PostgreSQL databases, write and execute queries, and manage database objects without leaving the Visual Studio Code environment. This extension revolutionizes the PostgreSQL development workflow by introducing comprehensive functionality, intuitive UI design, and seamless integration with cloud platforms such as Azure Database for PostgreSQL.
 
 1. Download the latest version of PostgreSQL from <https://www.enterprisedb.com/downloads/postgres-postgresql-downloads>.
 
@@ -165,13 +165,13 @@ Much nicer than the old cmd.exe or bare PowerShell.
 
         If you already have the Azure CLI installed, you'll need to be sure to upgrade to the latest version. This guide required v2.69.0 or greater. You can use this command to upgrade to the latest version:
 
-        ```azurecli title=""
+        ```azurecli title="" linenums="0"
         az upgrade
         ```
 
 2. Once installed, open a command prompt on your machine and verify the installation by running the following:
 
-    ```azurecli title=""
+    ```azurecli title="" linenums="0"
     az version
     ```
 
@@ -183,14 +183,14 @@ Much nicer than the old cmd.exe or bare PowerShell.
 
     To install the `ml` extension you should first remove any existing installation of the extension and also the CLI v1 `azure-cli-ml` extension:
 
-    ```azurecli title=""
+    ```azurecli title="" linenums="0"
     az extension remove -n azure-cli-ml
     az extension remove -n ml
     ```
 
     Then, run the following to install the latest version of the `ml` extension:
 
-    ```azurecli title=""
+    ```azurecli title="" linenums="0"
     az extension add -n ml
     ```
 
@@ -202,7 +202,7 @@ Much nicer than the old cmd.exe or bare PowerShell.
 
 5. Execute the following command from a terminal prompt to verify the tools were installed:
 
-    ```bash title=""
+    ```bash title="" linenums="0"
     azd version
     ```
 
@@ -218,7 +218,7 @@ To run the provision and deployment of the solution accelerator, you will need t
 
 2. Once installed, open a command prompt on your machine and verify the installation by running the following:
 
-    ```bash title=""
+    ```bash title="" linenums="0"
     pwsh
     ```
 
@@ -250,7 +250,7 @@ Python is the programming used to build the backend API for the solution. By uti
 
 3. Use the following command from a terminal prompt to verify Python was installed:
 
-    ```bash title=""
+    ```bash title="" linenums="0"
     python --version
     ```
 
@@ -292,11 +292,11 @@ Visual Studio Code is a versatile, open-source code editor that combines powerfu
 
 ### Install PostgreSQL Command Line Tools (psql)
 
-Throughout this workshop, you will use the [PostgreSQL](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) extension for VS Code to run queries against your PostgreSQL database. The extension provides the ability to connect to your database with PSQL, but this requires PSQL to be installed on your machine and in the system path.
+Throughout this workshop, you will use the [PostgreSQL extension for VS Code](https://learn.microsoft.com/azure/postgresql/extensions/vs-code-extension/overview) to run queries against your PostgreSQL database. The extension provides the ability to connect to your database with `psql`, but this requires `psql` to be installed on your machine and added to the system path.
 
 !!! tip "PostgreSQL for Visual Studio Code"
 
-    The PostgreSQL extension for VS Code is a feature-rich tool designed to simplify PostgreSQL database management and development. This extension empowers developers to connect to PostgreSQL databases, write and execute queries, and manage database objects without leaving the Visual Studio Code environment. This extension revolutionizes the PostgreSQL development workflow by introducing comprehensive functionality, intuitive UI design, and seamless integration with cloud platforms such as Azure Database for PostgreSQL.
+    The PostgreSQL extension for VS Code is a feature-rich tool designed to simplify PostgreSQL database management and development. It empowers developers to connect to PostgreSQL databases, write and execute queries, and manage database objects without leaving the Visual Studio Code environment. This extension revolutionizes the PostgreSQL development workflow by introducing comprehensive functionality, intuitive UI design, and seamless integration with cloud platforms such as Azure Database for PostgreSQL.
 
 1. Download the latest version of PostgreSQL from <https://www.enterprisedb.com/downloads/postgres-postgresql-downloads>.
 
