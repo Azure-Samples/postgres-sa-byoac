@@ -80,7 +80,7 @@ _Select each tab below to learn more about how the movement of data in the conte
 
           2. By integrating these two methods, hybrid search enhances the precision and comprehensiveness of search results, making it ideal for applications like semantic search, recommendation systems, and content discovery.
 
-    5. Semantic Ranking via model inference from the `azure_ai` extension's `rank` semantic operator reranks search results based on relevance and is returned into the RAG context as part of the composite prompt.
+    5. Semantic Ranking via model inference from the `azure_ai` extension's [`rank` semantic operator](https://learn.microsoft.com/azure/postgresql/flexible-server/generative-ai-azure-ai-semantic-operators#azure_airank) reranks search results based on relevance and is returned into the RAG context as part of the composite prompt.
 
     6. Azure OpenAI in Azure AI Foundry uses the composite prompt to formulates a response.
 

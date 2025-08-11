@@ -8,7 +8,7 @@ Here's a breakout of the _estimated cost_ of Azure resources deployed for this s
 - Azure App Configuration: ~$0.02/day
 - Azure Container Registry: ~$0.17/day
 - Azure OpenAI in Azure AI Foundry: Dependent upon usage of Copilot, AI-validation, and number of documents processed in the solution.
-- Azure AI Services Rerank Model (`cohere-rerank-v3.5`): Dependent upon usage of Copilot, and number of [queries](https://learn.microsoft.com/azure/ai-foundry/concepts/models-inference-examples#pricing-for-cohere-rerank-models) processed in the solution.
+- Azure AI Foundry Services Rerank Model (`cohere-rerank-v3.5`): Dependent upon usage of Copilot, and number of [queries](https://learn.microsoft.com/azure/ai-foundry/concepts/models-inference-examples#pricing-for-cohere-rerank-models) processed in the solution.
 - Other services are minimal cost.
 
 The estimated monthly cost is ~$33.80.
