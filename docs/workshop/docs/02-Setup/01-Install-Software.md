@@ -20,7 +20,6 @@ The required development environment uses a Visual Studio (VS) Code editor with 
 - [X] Git
 - [X] Docker desktop
 - [X] Visual Studio Code (and extensions)
-- [X] PostgreSQL command line tools (`psql`)
 
 ### Install Windows Terminal (Only if using Windows)
 
@@ -105,32 +104,6 @@ the needed extensions will automatically be installed within the `dev container`
 
 4. Close VS Code.
 
-### Install PostgreSQL Command Line Tools (psql)
-
-Throughout this workshop, you will use the [PostgreSQL extension for VS Code](https://learn.microsoft.com/azure/postgresql/extensions/vs-code-extension/overview) to run queries against your PostgreSQL database. The extension provides the ability to connect to your database with `psql`, but this requires `psql` to be installed on your machine and added to the system path.
-
-!!! tip "PostgreSQL for Visual Studio Code"
-
-    The PostgreSQL extension for VS Code is a feature-rich tool designed to simplify PostgreSQL database management and development. It empowers developers to connect to PostgreSQL databases, write and execute queries, and manage database objects without leaving the Visual Studio Code environment. This extension revolutionizes the PostgreSQL development workflow by introducing comprehensive functionality, intuitive UI design, and seamless integration with cloud platforms such as Azure Database for PostgreSQL.
-
-1. Download the latest version of PostgreSQL from <https://www.enterprisedb.com/downloads/postgres-postgresql-downloads>.
-
-2. Launch the PostgreSQL installer.
-
-3. On the **Installation Directory** screen of the installer, note the installation directory, as this will need to be added to your system path after the install.
-
-    ![Screenshot of the PostgreSQL installer Installation Directory screen.](../img/postgresql-installer-installation-directory.png)
-
-4. On the **Select Components** screen, uncheck everything but **Command Line Tools**.
-
-    ![Screenshot of the PostgreSQL installer Select Components screen.](../img/postgresql-installer-select-components.png)
-
-5. Select **Next** through the remain sceens and finish the installation.
-
-6. Add the `psql` directory to your system path.
-
-    This will be the **Installation directory** you noted above, plus `\bin`. For example, on Windows, the `psql` directory will be `C:\Program Files\PostgreSQL\17\bin`.
-
 ## Option 2 - Setup Local Development Environment
 
 ### Install Software
@@ -145,7 +118,6 @@ The required development environment uses a Visual Studio (VS) Code editor with 
 - [X] Node.js
 - [X] Docker desktop
 - [X] Visual Studio Code and required extensions
-- [X] PostgreSQL command line tools (`psql`)
 
 ### Install Windows Terminal (Only if using Windows)
 
@@ -290,29 +262,3 @@ Visual Studio Code is a versatile, open-source code editor that combines powerfu
     - [PostgreSQL](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
 
 4. Close VS Code.
-
-### Install PostgreSQL Command Line Tools (psql)
-
-Throughout this workshop, you will use the [PostgreSQL extension for VS Code](https://learn.microsoft.com/azure/postgresql/extensions/vs-code-extension/overview) to run queries against your PostgreSQL database. The extension provides the ability to connect to your database with `psql`, but this requires `psql` to be installed on your machine and added to the system path.
-
-!!! tip "PostgreSQL for Visual Studio Code"
-
-    The PostgreSQL extension for VS Code is a feature-rich tool designed to simplify PostgreSQL database management and development. It empowers developers to connect to PostgreSQL databases, write and execute queries, and manage database objects without leaving the Visual Studio Code environment. This extension revolutionizes the PostgreSQL development workflow by introducing comprehensive functionality, intuitive UI design, and seamless integration with cloud platforms such as Azure Database for PostgreSQL.
-
-1. Download the latest version of PostgreSQL from <https://www.enterprisedb.com/downloads/postgres-postgresql-downloads>.
-
-2. Launch the PostgreSQL installer.
-
-3. On the **Installation Directory** screen of the installer, note the installation directory, as this will need to be added to your system path after the install.
-
-    ![Screenshot of the PostgreSQL installer Installation Directory screen.](../img/postgresql-installer-installation-directory.png)
-
-4. On the **Select Components** screen, uncheck everything but **Command Line Tools**.
-
-    ![Screenshot of the PostgreSQL installer Select Components screen.](../img/postgresql-installer-select-components.png)
-
-5. Select **Next** through the remain sceens and finish the installation.
-
-6. Add the `psql` directory to your system path.
-
-    This will be the **Installation directory** you noted above, plus `\bin`. For example, on Windows, the `psql` directory will be `C:\Program Files\PostgreSQL\17\bin`.
