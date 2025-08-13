@@ -1,8 +1,20 @@
+// *****************************************************************************
+// Bicep module to create a new Container Apps Environment.
+// *****************************************************************************
+
+@description('The name of the Container Apps Environment.')
 param name string
+
+@description('The location for the Container Apps Environment.')
 param location string = resourceGroup().location
+
+@description('Tags to apply to the Container Apps Environment.')
 param tags object = {}
 
+// Dependency parameters
+@description('The name of the Log Analytics Workspace to use for logging.')
 param logAnalyticsWorkspaceName string
+@description('The name of the Application Insights resource to use for monitoring.')
 param applicationInsightsName string = ''
 
 resource containerAppsEnvironment 'Microsoft.App/managedEnvironments@2024-03-01' = {

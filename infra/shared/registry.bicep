@@ -1,5 +1,11 @@
+// *****************************************************************************
+// Bicep module to create an Azure Container Registry.
+// *****************************************************************************
+@description('The name of the Azure Container Registry.')
 param name string
+@description('The location for the Azure Container Registry.')
 param location string = resourceGroup().location
+@description('Tags to apply to the Azure Container Registry.')
 param tags object = {}
 
 param adminUserEnabled bool = true

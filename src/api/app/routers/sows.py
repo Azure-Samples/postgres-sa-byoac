@@ -109,7 +109,7 @@ async def analyze_sow(
                     INSERT INTO sows (number, start_date, end_date, budget, document, metadata, summary, vendor_id)
                     VALUES (
                     $1, $2, $3, $4, $5, $6, 
-                    azure_cognitive.summarize_abstractive($7, 'en', 2), --azure_cognitive.summarize_extractive($7, 'en', 2),
+                    azure_cognitive.summarize_abstractive($7, 'en', 2), --azure_cognitive.summarize_abstractive($7, 'en', 2),
                     $8)
                     RETURNING *;
                 ''', sow_number, start_date, end_date, budget, documentName, json.dumps(metadata), full_text, vendor_id)
@@ -122,7 +122,7 @@ async def analyze_sow(
                         budget = $3,
                         document = $4,
                         metadata = $5,
-                        summary = azure_cognitive.summarize_abstractive($6, 'en', 2) --azure_cognitive.summarize_extractive($6, 'en', 2)
+                        summary = azure_cognitive.summarize_abstractive($6, 'en', 2) --azure_cognitive.summarize_abstractive($6, 'en', 2)
                     WHERE id = $7
                     RETURNING *;
                 ''', start_date, end_date, budget, documentName, json.dumps(metadata), full_text, sow_id)

@@ -4,14 +4,14 @@
 
 !!! question "このワークショップとサンプルが役に立ちましたか？最新情報をお見逃しなく。"
 
-**[Postgresで自分の高度なAIコパイロットを構築する](http://aka.ms/pg-byoac-repo/)** サンプルは、Azure AIプラットフォーム上でRAGベースのコパイロットをコードファーストで開発するための最新の機能とベストプラクティスを反映する、積極的に更新されているプロジェクトです。**[リポジトリを訪問する](http://aka.ms/pg-byoac-repo/)** または下のボタンをクリックして、私たちに⭐️をください。
+**[Postgresで自分の高度なAIコパイロットを構築する](https://aka.ms/pg-byoac-repo/)** サンプルは、Azure AIプラットフォーム上でRAGベースのコパイロットをコードファーストで開発するための最新の機能とベストプラクティスを反映する、積極的に更新されているプロジェクトです。**[リポジトリを訪問する](https://aka.ms/pg-byoac-repo/)** または下のボタンをクリックして、私たちに⭐️をください。
 
 <!-- ボタンを表示したい場所にこのタグを配置します。 -->
-<a class="github-button" href="http://aka.ms/pg-byoac-repo/" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" data-show-count="true" aria-label="GitHubでaka.ms/pg-byoac-repoにスターを付ける"> PostgreSQLソリューションアクセラレータにスターを付ける！</a>
+<a class="github-button" href="https://aka.ms/pg-byoac-repo/" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" data-show-count="true" aria-label="GitHubでaka.ms/pg-byoac-repoにスターを付ける"> PostgreSQLソリューションアクセラレータにスターを付ける！</a>
 
 ## フィードバックを提供する
 
-このラボを他の人にとってより良くするためのフィードバックがありますか？[問題をオープン](http://aka.ms/pg-byoac-repo/)してお知らせください。
+このラボを他の人にとってより良くするためのフィードバックがありますか？[問題をオープン](https://aka.ms/pg-byoac-repo/)してお知らせください。
 
 ## クリーンアップ
 

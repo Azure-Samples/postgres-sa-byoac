@@ -1,4 +1,8 @@
 {
+    "azureAiServices": "ais-",
+    "azureAiFoundryAccount": "aif-",
+    "azureAiFoundryHub": "hub-",
+    "azureAiFoundryProject": "proj-",
     "analysisServicesServers": "as",
     "apiManagementService": "apim-",
     "appConfigurationConfigurationStores": "appcs-",

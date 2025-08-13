@@ -13,10 +13,9 @@ var defaultAccessPolicies = !empty(principalId) ? [
   }
 ] : []
 
-resource keyVault 'Microsoft.KeyVault/vaults@2022-07-01' = {
+resource keyVault 'Microsoft.KeyVault/vaults@2024-12-01-preview' = {
   name: name
   location: location
-  tags: tags
   properties: {
     tenantId: subscription().tenantId
     sku: { family: 'A', name: 'standard' }
@@ -25,6 +24,7 @@ resource keyVault 'Microsoft.KeyVault/vaults@2022-07-01' = {
       // define access policies here
     ])
   }
+  tags: tags
 }
 
 output endpoint string = keyVault.properties.vaultUri

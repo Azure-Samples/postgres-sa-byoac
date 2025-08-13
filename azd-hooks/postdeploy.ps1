@@ -86,7 +86,7 @@ Write-Host "Database Permissions Granted to API App Managed Identity"
 # Upload Sample Files to Blob Storage
 # ##############################################################################
 
-Write-Host "Uploading Sample Files to Blob Storage..."
+# Write-Host "Uploading Sample Files to Blob Storage..."
 
 # az storage blob upload `
 #     --auth-mode login `
@@ -168,7 +168,7 @@ Write-Host "Uploading Sample Files to Blob Storage..."
 #     --name "5/invoice/INV-WWE2024-001.pdf" `
 #     --file "./data/sample_docs/model_training/INV-WWE2024-001.pdf"
 
-Write-Host "Sample Files Uploaded to Blob Storage"
+# Write-Host "Sample Files Uploaded to Blob Storage"
 
 # # ##############################################################################
 # # Create Event Grid Subscription with BlobCreated & BlobUpdated Webhook
@@ -193,33 +193,6 @@ Write-Host "Sample Files Uploaded to Blob Storage"
 # }
 
 # Write-Host "Event Grid Subscription 'StorageBlob' Created"
-
-
-# ##############################################################################
-# Deploy Chosen Cross Encoder Model to the Azure ML Workspace
-# ##############################################################################
-
-# Capture start time of model deploy
-$startTime = [datetime]::Now
-Write-Host "Model Deploy Start Time: $startTime"
-
-Write-Host "If a model was chosen, now deploying Cross Encoder Model to the Azure ML Workspace..."
-Write-Host "Chosen model is: $env:DEPLOY_AML_MODEL"
-
-switch ($env:DEPLOY_AML_MODEL) {
-    "mini"  { & (Resolve-Path "$PSScriptRoot\..\scripts\aml\deploy_model_mini.ps1") -ErrorAction Stop }
-    "bge"   { & (Resolve-Path "$PSScriptRoot\..\scripts\aml\deploy_model_bge.ps1") -ErrorAction Stop }
-    "none"  { Write-Host "Skipping Semantic Re-ranker post-deployment script." }
-    default { Write-Error "Unknown DEPLOY_AML_MODEL value: $env:DEPLOY_AML_MODEL" }
-}
-
-# Capture end time of model deploy and calculate duration
-$endTime = [datetime]::Now
-$duration = $endTime - $startTime
-
-# Write out the duration of the model deploy
-Write-Host "Model Deploy End Time: $endTime"
-Write-Host ("Model Deploy Total Duration: {0} hours {1} minutes {2} seconds" -f $duration.Hours, $duration.Minutes, $duration.Seconds)
 
 # ##############################################################################
 # Update .env file to prevent postdeploy script from running again (this ensures that the script runs only once)

@@ -4,14 +4,14 @@
 
 !!! question "FOUND THIS WORKSHOP AND SAMPLE USEFUL? MAKE SURE YOU GET UPDATES."
 
-The **[Build Your Own Advanced AI Copilot with Postgres](http://aka.ms/pg-byoac-repo/)** sample is an actively updated project that will reflect the latest features and best practices for code-first development of RAG-based copilots on the Azure AI platform. **[Visit the repo](http://aka.ms/pg-byoac-repo/)** or click the button below, to give us a ⭐️.
+The **[Build Your Own Advanced AI Copilot with Postgres](https://aka.ms/pg-byoac-repo/)** sample is an actively updated project that will reflect the latest features and best practices for code-first development of RAG-based copilots on the Azure AI Foundry platform. **[Visit the repo](https://aka.ms/pg-byoac-repo/)** or click the button below, to give us a ⭐️.
 
 <!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="http://aka.ms/pg-byoac-repo/" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" data-show-count="true" aria-label="Star aka.ms/pg-byoac-repo on GitHub"> Give the PostgreSQL Solution Accelerator a Star!</a>
+<a class="github-button" href="https://aka.ms/pg-byoac-repo/" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" data-show-count="true" aria-label="Star aka.ms/pg-byoac-repo on GitHub"> Give the PostgreSQL Solution Accelerator a Star!</a>
 
 ## Provide Feedback
 
-Have feedback that can help us make this lab better for others? [Open an issue](http://aka.ms/pg-byoac-repo/) and let us know.
+Have feedback that can help us make this lab better for others? [Open an issue](https://aka.ms/pg-byoac-repo/) and let us know.
 
 ## Clean-up
 

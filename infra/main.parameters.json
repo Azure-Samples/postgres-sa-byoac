@@ -14,9 +14,6 @@
       "userPortalExists": {
         "value": "${SERVICE_USERPORTAL_RESOURCE_EXISTS=false}"
       },
-      "deployAMLModel": {
-        "value": "${DEPLOY_AML_MODEL}"
-      },
       "runPostDeployScript":{
         "value": "${RUN_POSTDEPLOY_SCRIPT=true}"
       },
