@@ -14,7 +14,7 @@ AI-driven Data Validation offers a transformative solution by automating documen
 
 The document ingestion workflow performs document text extraction, validation on document parts, comparison of milestone pricing with invoiced amounts and work performed, and looking for key SOW components such as compliance sections and wording. It includes the following steps:
 
-1. Azure AI Document Intelligence performs text extraction and uses Azure OpenAI to generate text embeddings of document chunks/sections inserted into the database.
+1. Azure AI Document Intelligence performs text extraction and uses Azure OpenAI in Azure AI Foundry to generate text embeddings of document chunks/sections inserted into the database.
 
 2. The `pgvector` extension in Azure Database for PostgreSQL performs semantic similarity comparisons between key document sections. Azure OpenAI's GPT-4o model is leveraged for data analysis and vector similarity evaluation. A threshold similarity score is assigned to assess the similarity of document wording and to validate that documents contain appropriate language.
 

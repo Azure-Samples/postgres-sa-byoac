@@ -103,7 +103,7 @@ Docker Desktop は、_Woodgrove Bank Portal and API_ アプリケーションを
         ERROR: error executing step command 'provision': deployment failed: error deploying infrastructure: deploying to subscription:
 
         Deployment Error Details:
-        AadAuthOperationCannotBePerformedWhenServerIsNotAccessible: The server 'psql-datacvdjta5pfnc5e' is not in an accessible state to perform Azure AD Principal operation. Please make sure the server is accessible before executing Azure AD Principal operations.
+        AadAuthOperationCannotBePerformedWhenServerIsNotAccessible: The server 'psql-cvdjta5pfnc5e' is not in an accessible state to perform Azure AD Principal operation. Please make sure the server is accessible before executing Azure AD Principal operations.
         ```
 
 3. 正常に完了すると、コンソールに `SUCCESS: ...` メッセージが表示されます。

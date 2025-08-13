@@ -1,9 +1,14 @@
-param applicationInsightsName string
+@description('The region where the resources will be deployed.')
 param location string = resourceGroup().location
+@description('The name of the Log Analytics Workspace.')
 param logAnalyticsName string
+@description('The name of the Application Insights resource.')
+param applicationInsightsName string
+@description('Tags to apply to the resources.')
 param tags object = {}
 
-resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2021-12-01-preview' = {
+@description('Creates a Log Analytics workspace.')
+resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2025-02-01' = {
   name: logAnalyticsName
   location: location
   tags: tags
@@ -18,6 +23,7 @@ resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2021-12-01-previ
   })
 }
 
+@description('Creates an Application Insights resource.')
 resource applicationInsights 'Microsoft.Insights/components@2020-02-02' = {
   name: applicationInsightsName
   location: location

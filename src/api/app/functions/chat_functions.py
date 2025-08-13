@@ -321,13 +321,10 @@ class ChatFunctions:
         Retrieves content chunks similar to the user query for the specified SOW.
         """
 
-        # Get the embeddings for the user query
-        query_embeddings = await self.__create_query_embeddings(user_query)
-
         # Create a vector search query
-        cte_query = f"SELECT content FROM sow_chunks"
+        cte_query = f"SELECT id, content FROM sow_chunks"
         cte_query += f" WHERE sow_id = {sow_id}" if sow_id is not None else ""
-        cte_query += f" ORDER BY embedding <=> '{query_embeddings}'"
+        cte_query += f" ORDER BY embedding <=> azure_openai.create_embeddings('embeddings', '{user_query}')::vector"
         cte_query += f" LIMIT 10"
 
         # Create the semantic ranker query
@@ -335,9 +332,14 @@ class ChatFunctions:
         WITH vector_results AS (
             {cte_query}
         )
-        SELECT content, relevance
-        FROM semantic_reranking('{user_query}',  ARRAY(SELECT content from vector_results))
-        ORDER BY relevance DESC
+        SELECT id, rank, score, content
+        FROM azure_ai.rank(
+            '{user_query}',
+            ARRAY(SELECT content from vector_results),
+            ARRAY(SELECT id from vector_results)
+        ) r
+        LEFT JOIN vector_results vr USING (id)
+        ORDER BY rank DESC
         LIMIT {max_results};
         """
 

@@ -1,5 +1,6 @@
 param systemTopicName string
 param subscriptionName string
+@secure()
 param endpointUrl string
 param includedEventTypes array
 

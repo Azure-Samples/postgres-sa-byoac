@@ -1,8 +1,20 @@
 # 2.3 Select An Azure Region
 
-To ensure you can successfully deploy the Azure resources using the `azd up` command, you must choose a region that supports the required Azure OpenAI `gpt-4o` and `text-embedding-ada-002` models, has at least 10K TPM of `Standard` capacity available for each of those models. On completing this step, you should have:
+To ensure you can successfully deploy the Azure resources using the `azd up` command, you must choose a region that supports the required Azure OpenAI `gpt-4o` and `text-embedding-ada-002` models, and has at least 10K TPM of `Standard` capacity available for each of those models. The region must also support the `cohere-rerank-v3.5` model. On completing this step, you should have:
 
 - [X] Selected an Azure region for workshop resources
+
+!!! tip "Azure AI Foundry region does not need to be the same as your resource group"
+
+    When running the `azd up` command, you will be prompted to select a region for deploying Azure AI Foundry. Those regions are restricted to those that currently support the required AI resources for this workshop. The available regions are:
+
+    - eastus
+    - eastus2
+    - northcentralus
+    - southcentralus
+    - westus
+
+    The region you select for your AI Foundry account and the associated models and services do not need to match the region you use for other workshop resources.
 
 ## Review regional availability and Azure OpenAI quotas
 
@@ -14,7 +26,9 @@ Follow the instructions below to review regional availability of the required se
 
 1. Review the regional availability guidance for the [gpt-4o](https://learn.microsoft.com/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-chat-completions#standard-models-by-endpoint) and [text-embedding-ada-002](https://learn.microsoft.com/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-embeddings#standard-models-by-endpoint) models in Azure OpenAI.
 
-2. Ensure you have a **at least 10K TPMs of `Standard` capacity available in the region** for both the `gpt-4o` and `text-embedding-ada-002` models. Follow [these instructions](https://learn.microsoft.com/azure/ai-services/openai/how-to/quota?tabs=rest#view-and-request-quota) to check your available quota.
+2. Review the regional availability guidance for the [Cohere Rerank v3.5 model](https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-serverless-availability#cohere-models).
+
+3. Ensure you have a **at least 10K TPMs of `Standard` capacity available in the region** for both the `gpt-4o` and `text-embedding-ada-002` models. Follow [these instructions](https://learn.microsoft.com/azure/ai-services/openai/how-to/quota?tabs=rest#view-and-request-quota) to check your available quota.
 
 ## Select an Azure region that supports workshop resources
 
