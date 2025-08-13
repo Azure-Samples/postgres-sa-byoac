@@ -20,6 +20,7 @@ The required development environment uses a Visual Studio (VS) Code editor with 
 - [X] Git
 - [X] Docker desktop
 - [X] Visual Studio Code (and extensions)
+- [X] PostgreSQL command line tools (`psql`)
 
 ### Install Windows Terminal (Only if using Windows)
 
@@ -144,7 +145,7 @@ The required development environment uses a Visual Studio (VS) Code editor with 
 - [X] Node.js
 - [X] Docker desktop
 - [X] Visual Studio Code and required extensions
-- [X] pgAdmin
+- [X] PostgreSQL command line tools (`psql`)
 
 ### Install Windows Terminal (Only if using Windows)
 
