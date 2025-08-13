@@ -86,7 +86,7 @@ Configuration values, such as connection string and endpoints, that allow your a
 
 You will use the [PostgreSQL extension in VS Code](https://learn.microsoft.com/azure/postgresql/extensions/vs-code-extension/overview) to connect to your database, configure various features in the database, and execute queries to test those features. The `azd up` deployment script added your Microsoft Entra ID user as the owner of the database, so you will authenticate with Entra ID. Please follow the steps below to connect to your Azure Database for PostgreSQL - Flexible Server using the PostgreSQL extension in VS Code:
 
-1. In Visual Studio Code, open the **PostgreSQL** extension by selecting the PostgreSQL (elephant) icon in the Activity Bar or by using the `View: Show PostgreSQL` command.
+1. In Visual Studio Code, open the **PostgreSQL** extension by selecting the PostgreSQL (elephant) icon in the _Activity Bar_ or by using the `View: Show PostgreSQL` command.
 
 2. Select **Add Connection** in the PostgreSQL panel.
 
