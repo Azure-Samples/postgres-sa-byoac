@@ -238,8 +238,8 @@ az storage blob upload `
     --overwrite true `
     --account-name "${env:AZURE_STORAGE_ACCOUNT_NAME}" `
     --container-name "${env:AZURE_STORAGE_CONTAINER_NAME}" `
-    --name "4/sow/Statement_of_Work_Trey_Research_Woodgrove_Bank_20240501.pdf" `
-    --file "./data/sample_docs/Seeded_Data/Statement_of_Work_Trey_Research_Woodgrove_Bank_20240501.pdf"
+    --name "4/sow/Statement_of_Work_Trey_Research_Woodgrove_Bank_20241111.pdf" `
+    --file "./data/sample_docs/Seeded_Data/Statement_of_Work_Trey_Research_Woodgrove_Bank_20241111.pdf"
 
 az storage blob upload `
     --auth-mode login `
