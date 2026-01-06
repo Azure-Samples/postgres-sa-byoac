@@ -31,6 +31,6 @@ Once you have completed this workshop, delete the Azure resources you created. Y
 
 3. In the terminal window, you will be shown a list of the resources that will be deleted and prompted about continuing. Enter "y" at the prompt to begin the resource deletion.
 
-## Persist changes to GitHub
+## Persist Changes to GitHub
 
 If you want to save any changes you have made to files, use the Source Control tool in VS Code to commit and push your changes to your fork of the GitHub repo.

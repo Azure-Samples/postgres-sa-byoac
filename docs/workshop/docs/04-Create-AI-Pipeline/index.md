@@ -8,7 +8,7 @@ Before integrating AI into the data ingestion workflow, the application required
 
 This section will review the code that integrates AI components into the solution.
 
-## Validate documents
+## Validate Documents
 
 AI-driven Data Validation offers a transformative solution by automating document processing, improving accuracy, and reducing the burden on human reviewers. Through a combination of intelligent document ingestion, machine learning, and natural language processing, AI will revolutionize contract validation.
 

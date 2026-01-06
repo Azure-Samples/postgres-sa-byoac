@@ -35,7 +35,7 @@ Before running the `azd up` command, you must authenticate your VS Code environm
 
 1. To create Azure resources, you need to be authenticated from VS Code. Open a new integrated terminal in VS Code. Then, complete the following steps:
 
-### Authenticate with `az` for post-provisioning tasks
+### Authenticate with `az` for Post-Provisioning Tasks
 
 1. Log into the Azure CLI `az` using the command below.
 
@@ -48,7 +48,7 @@ Before running the `azd up` command, you must authenticate your VS Code environm
 
     !!! info "If you have more than one Azure subscription, you may need to run `az account set -s <subscription-id>` to specify the correct subscription to use."
 
-### Authenticate with `azd` for provisioning & managing resources
+### Authenticate with `azd` for Provisioning and Managing Resources
 
 1. Log in to Azure Developer CLI. This is only required once per-install.
 
@@ -91,7 +91,7 @@ You are now ready to provision your Azure resources and deploy the Invoice Pilot
     !!! warning "PostgreSQL Firewall and IP Address Access"
         **During deployment, the system automatically adds your current public IP address to the PostgreSQL firewall** to allow database setup scripts to run. This firewall rule is named `AllowAZDLocalMachine` and **remains active after deployment**.
 
-        **Important considerations:**
+        **Important Considerations:**
         
         - **Database Access from Different Locations**: If you or team members need to access the PostgreSQL database from different locations (home, office, cloud shells), each location's IP will need to be added to the PostgreSQL firewall rules
         - **Direct Database Connections**: Only machines with whitelisted IP addresses can connect directly to the PostgreSQL server

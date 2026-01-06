@@ -4,8 +4,8 @@ This guide serves as both a solution accelerator and a learning tool for develop
 
 To complete this guide, you will need the following:
 
-- [x] Requires using **your own GitHub account** - you can [get one for free](https://github.com/signup)
-- [x] Requires using **your own Azure subscription** - you can [get one for free](https://aka.ms/free)
-- [x] Requires you to **provision the infrastructure** in your Azure subscription - we provide detailed instructions and [Bicep deployment scripts](https://learn.microsoft.com/azure/azure-resource-manager/bicep/deployment-script-bicep)
-- [x] Requires using **your own computer**
-- [x] Requires you to **setup a development environment on your computer** - we provide detailed instructions
+- [x] Requires using **Your Own GitHub account** - you can [get one for free](https://github.com/signup)
+- [x] Requires using **Your Own Azure Subscription** - you can [get one for free](https://aka.ms/free)
+- [x] Requires you to **Provision the Infrastructure** in your Azure subscription - we provide detailed instructions and [Bicep deployment scripts](https://learn.microsoft.com/azure/azure-resource-manager/bicep/deployment-script-bicep)
+- [x] Requires using **Your Own Computer**
+- [x] Requires you to **Setup a Development Environment on Your Computer** - we provide detailed instructions

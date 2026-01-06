@@ -18,7 +18,7 @@ In this section, you will validate your setup before moving on to the next phase
 
 ---
 
-## Inspect deployed Azure resources
+## Inspect Deployed Azure Resources
 
 !!! tip "The Azure Portal allows you to view the resources provisioned on Azure and verify that they are setup correctly"
 
@@ -62,7 +62,7 @@ In this section, you will validate your setup before moving on to the next phase
 
         In addition to the above resources, you will also see several other resources, like _Managed Identities_, that are supporting resources for those in the table.
 
-## Ensure the deployed apps are running
+## Ensure the Deployed Apps Are Running
 
 The `azd up` command included steps to deploy the Invoice Pilot application into **Azure Container Apps** (ACA). Two containers were created. One for the Invoice Pilot portal UI and a second for the backend API that supports it.
 
@@ -96,7 +96,7 @@ The `azd up` command included steps to deploy the Invoice Pilot application into
 
     ![Screenshot of the Vendors page in the Invoice Pilot Contract Management Portal](../img/vendors.png)
 
-## View Azure OpenAI model deployments in Azure AI Foundry
+## View Azure OpenAI Model Deployments in Azure AI Foundry
 
 !!! tip "The Azure AI Foundry portal lets you view and manage the Azure AI resources for your app."
 
@@ -106,11 +106,11 @@ You will use the Azure AI Foundry portal to verify the `gpt-4o` and `text-embedd
 
     ![Screenshot of the resources in the resource group, with the Azure OpenAI resource highlighted.](../img/azure-portal-rg-openai.png)
 
-2. On the Azure OpenAI resource's **Overview** page, select **Explore Azure AI Foundry portal**.
+2. On the Azure OpenAI resource's **Overview** page, select **Explore Azure AI Foundry Portal**.
 
     ![Screenshot of the Azure OpenAI service's Overview blade, with the Explore Azure AI Foundry portal highlighted with a red box.](../img/azure-portal-openai-overview.png)
 
-3. In **Azure AI Foundry**, select the **Deployments** menu item under **Shared resources** in the left-hand navigation menu.
+3. In **Azure AI Foundry**, select the **Deployments** menu item under **Shared Resources** in the left-hand navigation menu.
 
     ![Screenshot of Azure AI Foundry, with the Deployments menu item highlighted and selected. The completions and embeddings model deployments are displayed.](../img/azure-ai-foundry-deployments.png)
 

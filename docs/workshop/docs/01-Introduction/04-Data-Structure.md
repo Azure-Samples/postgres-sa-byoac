@@ -85,9 +85,9 @@ The solution accelerator integrates with **Azure AI services** to extract, valid
 
 ### Why These Fields Matter
 
-- **Vector embeddings (`embedding`)** enable **semantic search** by allowing **AI-powered retrieval** of similar SOW clauses, contract terms, and invoices.  
-- **Validation fields (`result`, `validation_passed`)** ensure AI-generated extractions meet business rules.  
-- **Graph relationships within `vendor_graph`** supports **GraphRAG (Retrieval-Augmented Generation)** where chosen fields can be utilized in AI models for analysis related to vendors, contracts, and invoices, as well as enhanced AI accuracy.
+- **Vector Embeddings (`embedding`)** enable **semantic search** by allowing **AI-powered retrieval** of similar SOW clauses, contract terms, and invoices.  
+- **Validation Fields (`result`, `validation_passed`)** ensure AI-generated extractions meet business rules.  
+- **Graph Relationships within `vendor_graph`** supports **GraphRAG (Retrieval-Augmented Generation)** where chosen fields can be utilized in AI models for analysis related to vendors, contracts, and invoices, as well as enhanced AI accuracy.
 
 ---
 
@@ -97,7 +97,7 @@ The **JSONB** data type in PostgreSQL provides a powerful way to store and query
 
 ### Why JSONB is Ideal for AI Services
 
-- **Schema Evolution**: AI applications frequently introduce new features, models, or metadata. JSONB allows for **seamless schema modifications** without disrupting the existing relational structure.
+- **Schema Evolution**: AI applications frequently introduce new features, models, or metadata. JSONB allows for **seamless Schema Modifications** without disrupting the existing relational structure.
 - **Handling Unstructured Data**: Many AI workloads ingest **sensor data, user interactions, embeddings, and model predictions** that don’t fit into traditional relational columns.
 - **Efficient Indexing and Querying**: JSONB supports **GIN (Generalized Inverted Index)** and **JSONPath queries**, making it fast and efficient to search for nested data.
 - **Compact Storage and Faster Retrieval**: Unlike plain JSON, JSONB is **binary-optimized**, reducing overhead in AI pipelines that process large volumes of data.
@@ -106,12 +106,12 @@ The **JSONB** data type in PostgreSQL provides a powerful way to store and query
 
 When integrating AI services into a PostgreSQL-backed system, JSONB can be leveraged to store:
 
-- **Inference results** (e.g., probabilities, classifications, embeddings).
-- **Model metadata** (e.g., hyperparameters, training configurations).
-- **Feature extraction details** (e.g., NLP tokenized words, vector embeddings).
-- **Real-time user interactions** (e.g., chat history, event tracking).
+- **Inference Results** (e.g., probabilities, classifications, embeddings).
+- **Model Metadata** (e.g., hyperparameters, training configurations).
+- **Feature Extraction Details** (e.g., NLP tokenized words, vector embeddings).
+- **Real-time User Interactions** (e.g., chat history, event tracking).
 
-### Adding indexes for JSONB queries
+### Adding Indexes for JSONB Queries
 
 GIN (Generalized Inverted Index) is a type of indexing in PostgreSQL that is optimized for handling complex data types, including JSONB. Since JSONB stores data in a binary format and supports rich querying, GIN indexes make it possible to efficiently search within nested JSONB structures.
 
@@ -144,7 +144,7 @@ WHERE metadata @> '{"extra_field": 123}';
 
 By leveraging JSONB, AI services can store, retrieve, and evolve their data structures efficiently. This approach ensures that new AI-driven insights, feature extraction, and model outputs can be incorporated into the system without rigid schema modifications, ultimately accelerating the deployment and scaling of AI solutions within PostgreSQL environments.
 
-### JSONB learning resources
+### JSONB Learning Resources
 
 - [Overview of AI Services and Data](https://techcommunity.microsoft.com/blog/adforpostgresql/azure-postgresql-with-azure-open-ai-to-innovate-banking-apps-unlocking-the-power/4257561)
 - [PostgreSQL JSONB Documentation](https://www.postgresql.org/docs/current/datatype-json.html)

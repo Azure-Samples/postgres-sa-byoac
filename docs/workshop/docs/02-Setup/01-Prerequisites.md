@@ -6,7 +6,7 @@ Review the details about what you need to do before starting the workshop, what 
 
 To be able to complete this solution accelerator, you will need:
 
-1. **Your own computer.**
+1. **Your Own Computer.**
     - Any computer capable of running Visual Studio Code, Docker Desktop, and a modern web browser will do.
     - You must have the ability to install software on the computer.
     - We recommend installing a recent version of Edge, Chrome, or Safari.
@@ -17,12 +17,12 @@ To be able to complete this solution accelerator, you will need:
 3. **An Azure Subscription.**
     - This is needed to provision the Azure infrastructure for your AI project.
     - If you don't have an Azure account, [sign up for a free one](https://aka.ms/free) now. (It takes just a few minutes.)
-4. **Sufficient Azure ML Online Endpoint CPU quota.**
+4. **Sufficient Azure ML Online Endpoint CPU Quota.**
     - To run the solution accelerator's Semantic Re-ranker element,  you have two choices.
       - You can run small, but high quality model on a Standard DASv4 with 4 vCPUs.
       - You can alternatively run a much larger, and even more accurate model on a Standard DASv4 with 16 vCPUs.
       - Therefore, depending on the model you choose, you need to ensure you have either 4 or 16 cores available to you in your subscription. Detailed instructions are provided in the setup section to verify this in your subscription.
-5. **An appropriate Azure region for your workshop resources**
+5. **An Appropriate Azure Region For Your Workshop Resources**
     - To ensure you can successfully complete the workshop and deploy the required Azure resources, you must choose a region that supports those resources.
     - Before selecting an Azure region:
       - Review the regional availability guidance for the [gpt-4o](https://learn.microsoft.com/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-chat-completions#standard-models-by-endpoint) and [text-embedding-ada-002](https://learn.microsoft.com/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-embeddings#standard-models-by-endpoint) models in Azure OpenAI.
@@ -37,16 +37,16 @@ To be able to complete this solution accelerator, you will need:
 
 To get the most of this solution accelerator, you should have:
 
-### Recommended knowledge and experience
+### Recommended Knowledge and Experience
 
 1. **Familiarity with Visual Studio Code**
     - The default editor used in this workshop is Visual Studio Code. You will configure your VS Code development environment with the required extensions and code libraries.
     - The workshop requires Visual Studio Code and other tools to be installed on your computer. You will be running the solution code from your local computer.
-2. **Familiarity with the Azure portal**
+2. **Familiarity with the Azure Portal**
     - The workshop assumes you are familiar with navigating to resources within the Azure portal.
     - You will use the Azure portal to retrieve endpoints, keys, and other values associated with the resources you deploy for this workshop.
 
-### Preferred knowledge and experience
+### Preferred Knowledge and Experience
 
 1. **Familiarity with `git` operations**
     - You will be forking the sample repository into your GitHub account.

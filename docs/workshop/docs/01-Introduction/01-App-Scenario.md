@@ -8,7 +8,7 @@ In the financial services industry, validating contract-related documents such a
 
 This reference implementation shows how a financial services organization can integrate advanced AI capabilities into their existing application by using:
 
-- **Azure AI extension** and **pgvector** to enable AI functions and vector search directly inside PostgreSQL.  
+- **Azure AI Extension** and **pgvector** to enable AI functions and vector search directly inside PostgreSQL.  
 - **Azure Document Intelligence** to extract and validate key information from uploaded invoices and SOWs.  
 - **Azure OpenAI (GPT-4)** to reason over extracted data and verify alignment between documents.  
 - **Apache AGE** to add graph analytics capabilities for exploring relationships among vendors, SOWs, and invoices.
@@ -23,9 +23,9 @@ This reference implementation shows how a financial services organization can in
 
 The **Invoice Pilot** application is fully implemented and ready to deploy. It includes:
 
-- A **web application** that serves as an enterprise portal for uploading and reviewing invoices.  
-- A **backend API** integrated with Azure Database for PostgreSQL and Azure AI services.  
-- A **set of automation pipelines** that handle document ingestion, validation, and AI-based reasoning.
+- A **Web Application** that serves as an enterprise portal for uploading and reviewing invoices.  
+- A **Backend API** integrated with Azure Database for PostgreSQL and Azure AI services.  
+- A **Set of Automation Pipelines** that handle document ingestion, validation, and AI-based reasoning.
 
 Once deployed, you can explore the following key capabilities:
 
